@@ -24,9 +24,10 @@
   border-radius: 25px;
   margin: 20px;
   float: right;
-  width: 300px;
-  height: 450px;
+  width: 20%;
+  height: 325px;
   color: White;
+  padding: 5px;
   background-color: rgba(0,0,0,0.2);
 }
 
