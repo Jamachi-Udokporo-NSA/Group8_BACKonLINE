@@ -5,6 +5,7 @@
 
 /* --- set location of page directory --------------------------------------- */
 .TopBar {
+  border-radius: 25px;
   width: 100%;
   background-color: Black;
   position: relative;z-index:1000;
@@ -15,11 +16,12 @@
 .Logo {
   color: White;
   float: left;
-  padding: 5px;
+  padding: 10px;
 }
 
 /* --- set location of page directory --------------------------------------- */
 .contentRight {
+  border-radius: 25px;
   margin: 20px;
   float: right;
   width: 300px;
