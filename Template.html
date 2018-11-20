@@ -1,43 +1,41 @@
+<!-- Home page 11/10/2018 -------------------------------------------------->
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>NavBar</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+<html>
+<!-- header importing style sheet  ----------------------------------------->
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <!-- <h1>Hello, world!</h1> -->
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <Logo class="Logo">
-          <img src="Media/CULogo.png" width = 60px>
-          <img src="Media/ARULogo.png" width = 60px>
-          <h1>BACKonLINE™</h1>
-        </Logo>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-      </div>
-    </nav>
+<head>
+  <title> Home </title>
+  <link rel="Stylesheet" type="text/css" href="css/Stylesheet.css">
+</head>
 
+<body>
+  <top class="TopBar">
+    <!-- Main nav bar --------------------------------------------------------->
+      <Logo class="Logo">
+        <img src="Media/CULogo.png" width = 70px>
+        <img src="Media/ARULogo.png" width = 70px>
+      </Logo>
+      <Logo class="Logo">
+        <h1>BACKonLINE™</h1>
+      </Logo>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+  </top>
+
+  <!-- Content of page ------------------------------------------------------>
+  <content class="content">
+
+    <!--- A navigation bar for the python section ---------------------------->
+    <ContentRight class="contentRight"><center>
+      <h2>Survey directory</h2><br>
+      <a href="BeginnerPython.html"><b>A: Pain behaviour</b></a><br>
+      <a href="IntermediatePython.html"><b>B: Back pain and work</b></a><br>
+      <a href="AdvancedPython.html"><b>C: Back pain and lifestyle:</b></a><br>
+      <a href="CheatPython.html"><b>Perception of back pain:</b></a>
+    </center></ContentRight>
+
+  </content>
+
+</body>
+
 </html>

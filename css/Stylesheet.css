@@ -1,0 +1,29 @@
+/* --- set location of page directory --------------------------------------- */
+.myCol {
+    border: 2px blue solid;
+}
+
+/* --- set location of page directory --------------------------------------- */
+.TopBar {
+  width: 100%;
+  background-color: Black;
+  position: relative;z-index:1000;
+  float: left;
+}
+
+/* --- set location of page directory --------------------------------------- */
+.Logo {
+  color: White;
+  float: left;
+  padding: 5px;
+}
+
+/* --- set location of page directory --------------------------------------- */
+.contentRight {
+  margin: 20px;
+  float: right;
+  width: 300px;
+  height: 450px;
+  color: White;
+  background-color: rgba(0,0,0,0.2);
+}
