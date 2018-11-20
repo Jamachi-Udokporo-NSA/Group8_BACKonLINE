@@ -29,3 +29,8 @@
   color: White;
   background-color: rgba(0,0,0,0.2);
 }
+
+/* --- set location of page directory --------------------------------------- */
+.contentLeft {
+  margin: 20px;
+}
