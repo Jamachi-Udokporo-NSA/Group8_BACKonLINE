@@ -23,6 +23,12 @@ CREATE TABLE IF NOT EXISTS `Staff` (
 	`Email`	TEXT NOT NULL,
 	`Password`	TEXT NOT NULL
 );
+
+INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin')
+
+
+
+
 CREATE TABLE IF NOT EXISTS `Question` (
 	`QuestionID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`QuestionText`	TEXT NOT NULL
