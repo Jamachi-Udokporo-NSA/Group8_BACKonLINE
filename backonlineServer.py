@@ -8,8 +8,8 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 @app.route("/Main", methods=['GET'])
 def returnFirst():
-    if request.method == 'GET':
-        return render_template('Template.html')
+        if request.method == 'GET':
+                return render_template('Template.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
