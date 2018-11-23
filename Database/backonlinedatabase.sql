@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `Staff` (
 	`Password`	TEXT NOT NULL
 );
 
-INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin')
+INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin');
 
 
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `Answer` (
 	`AnswerID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`AnswerText`	TEXT NOT NULL,
 	`Score`	INTEGER NOT NULL,
-	`QuestionID`	INTEGER NOT NULL
+	 FOREIGN KEY(Answer) REFERENCES Answer(QuestionID) INTEGER NOT NULL
 );
 
 
