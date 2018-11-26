@@ -1,52 +1,29 @@
-<!-- Home page 11/10/2018 -------------------------------------------------->
-<!DOCTYPE html>
+{%extends 'Template.html'%}
 
-<html>
-<!-- header importing style sheet       ----------------------------------------->
 
-<head>
-  <title> Survey </title>
-  <link rel="Stylesheet" type="text/css" href="http://localhost:5000/static/styledocs/css/Stylesheet.css">
-</head>
+{%block mainBlock%}
+<h2> Students</h2>
+<table border = 1>
+   <thead>
+      <td>ID</td>
+      <td>firstName</td>
+      <td>surname</td>
+      <td>termLocation</td>
+      <td>homeLocation</td>
+      <td>Public?</td>
+   </thead>
 
-<body>
-  <top class="TopBar">
-    <!-- Main nav bar --------------------------------------------------------->
-      <Logo class="Logo">
-        <img src="http://localhost:5000/static/Media/CULogo.png" height = "70px">
-        <img src="http://localhost:5000/static/Media/ARULogo.png" height = "70px">
-      </Logo>
-      <Logo class="Logo">
-        <h1>BACKonLINE™</h1>
-      </Logo>
-
-  </top>
-
-  <!-- Content of page ------------------------------------------------------>
-  <content class="content">
-
-    <!--- A navigation bar for the python section ---------------------------->
-    <ContentRight class="contentRight"><center>
-      <h2>Survey directory</h2>
-      <a href="SurveyPainBehaviour.html"><b>A: Pain behaviour</b></a><br><br>
-      <a href="SurveyBackPainAndWork.html"><b>B: Back pain and work</b></a><br><br>
-      <a href="SurveyBackPainAndLifestyle.html"><b>C: Back pain and lifestyle:</b></a><br><Br>
-      <a href="SurveyPerceptionOfBackPain.html"><b>Perception of back pain:</b></a><br>
-    </center></ContentRight>
-
-    <ContentLeft class="contentLeft"><center>
-    <h2> A: Pain behaviour </h2>
-        <h3> 01. Do you know what caused your current back pain? </h3>
-        <form action="/survey.html" method="get">
-            <input type="checkbox" name="" value=""> Yes <br>
-            <input type="checkbox" name="" value="" checked> No <br>
-            <input type="checkbox" name="" value="" checked> Not sure <br>
-            <!-- <input type="submit" value="Submit"> -->
-          </form>
-    </center></ContentLeft>
-
-  </content>
-
-</body>
-
-</html>
+   {% for row in data %}
+   <!-- A List of tuples so row is each item in the list
+        and then the index is the column number.-->
+      <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[5]}}</td>
+      </tr>
+   {% endfor %}
+</table>
+{%endblock%}
