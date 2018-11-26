@@ -20,15 +20,11 @@ def fetchingdata():
         cur.execute("SELECT * FROM Question;")
         data = cur.fetchall()
         print(data)
+        conn.close()
         return render_template('Template.html', data = data)
 
     except:
         print('there was an error')
-        return str(data)
-
-    finally:
-        conn.close()
-
 
 
 if __name__ == "__main__":

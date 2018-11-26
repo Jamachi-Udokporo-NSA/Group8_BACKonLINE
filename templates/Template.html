@@ -42,8 +42,23 @@
             <input type="checkbox" name="" value="" checked> No <br>
             <input type="checkbox" name="" value="" checked> Not sure <br>
             <!-- <input type="submit" value="Submit"> -->
-          </form>
-    </center></ContentLeft>
+          </form><br>
+
+    <article class="contentLeft">
+      {% for Question in data %}
+        {% if Question[0] == 1 %}
+              <h3> {{ Question[0]}}  {{ Question[1]}} </h3>
+              <form action="/Template.html" method="get">
+                  <input type="checkbox" name="" value=""> Yes <br>
+                  <input type="checkbox" name="" value="" checked> No <br>
+                  <input type="checkbox" name="" value="" checked> Not sure <br>
+                  <!-- <input type="submit" value="Submit"> -->
+                </form>
+        {% endif %}
+
+      {% endfor %}
+
+    </article></center></ContentLeft>
 
   </content>
 
