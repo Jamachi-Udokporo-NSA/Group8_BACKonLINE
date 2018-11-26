@@ -34,4 +34,13 @@
 /* --- set location of page directory --------------------------------------- */
 .contentLeft {
   margin: 20px;
+  color: blue;
+
+}
+.h1{
+  color:black;
+}
+
+.h3{
+  color:black;
 }

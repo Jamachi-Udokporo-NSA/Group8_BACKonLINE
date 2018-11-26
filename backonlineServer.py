@@ -37,13 +37,13 @@ def getSurveyB():
     try:
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
-        cur.execute("SELECT * FROM Question WHERE QuestionID = 1 - 22;")
+        cur.execute("SELECT * FROM Question WHERE QuestionID BETWEEN 23 AND 28; ")
         questionData = cur.fetchall()
         conn.close()
 
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
-        cur.execute("SELECT * FROM Answer WHERE QuestionID = 1 - 22;")
+        cur.execute("SELECT * FROM Answer WHERE QuestionID BETWEEN 23 AND 28; ")
         answerData = cur.fetchall()
         conn.close()
 
@@ -57,13 +57,13 @@ def getSurveyC():
     try:
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
-        cur.execute("SELECT * FROM Question WHERE QuestionID = 1 - 22;")
+        cur.execute("SELECT * FROM Question WHERE QuestionID BETWEEN 29 AND 32;")
         questionData = cur.fetchall()
         conn.close()
 
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
-        cur.execute("SELECT * FROM Answer WHERE QuestionID = 1 - 22;")
+        cur.execute("SELECT * FROM Answer WHERE QuestionID BETWEEN 29 AND 32; ")
         answerData = cur.fetchall()
         conn.close()
 
@@ -77,13 +77,13 @@ def getSurveyD():
     try:
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
-        cur.execute("SELECT * FROM Question; ")
+        cur.execute("SELECT * FROM Question WHERE QuestionID BETWEEN 33 AND 39; ")
         questionData = cur.fetchall()
         conn.close()
 
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
-        cur.execute("SELECT * FROM Answer; ")
+        cur.execute("SELECT * FROM Answer WHERE QuestionID BETWEEN 33 AND 39; ")
         answerData = cur.fetchall()
         conn.close()
 
