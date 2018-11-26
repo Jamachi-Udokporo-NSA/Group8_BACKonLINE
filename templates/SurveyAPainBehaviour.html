@@ -3,19 +3,21 @@
 
 {%block mainBlock%}
 <h2> A: Pain behaviour </h2>
-
+<article class="contentLeft">
   {% for Question in questionData %}
+    <form action="/Template.html" method="get">
       <h3> {{ Question[0]}})  {{ Question[1]}} </h3>
 
-      <form action="/Template.html" method="get">
 
+        <div style = "color:blue">
         {% for Answer in answerData %}
           {% if Answer[3] == Question[0] %}
-            <input type="checkbox" name="" value=""> {{Answer[1]}} <br>
+            <input type="checkbox" name="" value=""> {{Answer[1]}}<br>
           {% endif %}
         {% endfor %}
-      </form>
+        </div>
 
+    </form>
   {% endfor %}
 
 {%endblock%}
