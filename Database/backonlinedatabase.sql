@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `Staff` (
 	`Password`	TEXT NOT NULL
 );
 
-INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin')
+INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin');
 
 CREATE TABLE IF NOT EXISTS `Question` (
 	`QuestionID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -35,7 +35,7 @@ INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (1,'Do you know what 
 INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (2,'If yes, choose an option from the list below:');
 INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (3,'What do you think is wrong with your back?');
 INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (4,'If you have been treated for back pain, were you satisfied with your treatment?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (5,'What medication do you take to manage your back pain? ');
+INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (5,'What medication do you take to manage your back pain?, Please tick all apply ');
 INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (6,'How effective is the medication in reducing your back pain?');
 INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (7,'Where is your pain? Please tick all body areas that apply');
 INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (8,'Is your pain there all the time?');
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `Answer` (
 	`AnswerID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`AnswerText`	TEXT NOT NULL,
 	`Score`	INTEGER NOT NULL,
-	`QuestionID`	INTEGER NOT NULL
+	 FOREIGN KEY(Answer) REFERENCES Answer(QuestionID) INTEGER NOT NULL
 );
 
 
