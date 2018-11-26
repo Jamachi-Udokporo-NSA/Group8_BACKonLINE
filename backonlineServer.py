@@ -17,15 +17,20 @@ def fetchingdata():
     try:
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
-        cur.execute("SELECT * FROM Question;")
+        cur.execute("SELECT * FROM Question; ")
         questionData = cur.fetchall()
-        cur.execute("SELECT * FROM Answers;")
-        answerData =   cur.fetchall()
         conn.close()
+
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM Answer; ")
+        answerData = cur.fetchall()
+        conn.close()
+
         return render_template('Template.html',questionData = questionData, answerData= answerData)
 
     except:
-        print('there was an error')
+        return 'there was an error'
 
 
 if __name__ == "__main__":
