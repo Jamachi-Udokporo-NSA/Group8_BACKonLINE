@@ -52,5 +52,44 @@ def getSurveyB():
     except:
         return 'there was an error'
 
+@app.route("/SurveyC")
+def getSurveyC():
+    try:
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM Question; ")
+        questionData = cur.fetchall()
+        conn.close()
+
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM Answer; ")
+        answerData = cur.fetchall()
+        conn.close()
+
+        return render_template('SurveyCBackPainAndLifestyle.html',questionData = questionData, answerData= answerData)
+
+    except:
+        return 'there was an error'
+
+@app.route("/SurveyD")
+def getSurveyD():
+    try:
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM Question; ")
+        questionData = cur.fetchall()
+        conn.close()
+
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM Answer; ")
+        answerData = cur.fetchall()
+        conn.close()
+
+        return render_template('SurveyDPerceptionOfBackPain.html',questionData = questionData, answerData= answerData)
+
+    except:
+        return 'there was an error'
 if __name__ == "__main__":
     app.run(debug=True)
