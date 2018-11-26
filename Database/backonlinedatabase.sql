@@ -28,48 +28,49 @@ INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin');
 
 CREATE TABLE IF NOT EXISTS `Question` (
 	`QuestionID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	`QuestionText`	TEXT NOT NULL
+	`QuestionText`TEXT NOT NULL
+	'QuestionType'TEXT NOT NULL
 );
 
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (1,'Do you know what caused your current back pain?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (2,'If yes, choose an option from the list below:');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (3,'What do you think is wrong with your back?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (4,'If you have been treated for back pain, were you satisfied with your treatment?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (5,'What medication do you take to manage your back pain?, Please tick all apply ');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (6,'How effective is the medication in reducing your back pain?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (7,'Where is your pain? Please tick all body areas that apply');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (8,'Is your pain there all the time?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (9,'What type of pain is it? Please tick all options that apply');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (10,'When is your pain at its worst?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (11,'Can you ease your back pain?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (12,'How do you ease your back pain? Please tick all options that apply');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (13,'In general, is your back pain getting better, staying the same or getting worse?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (14,'From the list below, please tick all the activities that make your pain worse. ');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (15,'From the list below, please tick all the activities that stop or decrease your pain. ');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (16,'Is this the first time you have experienced this type of pain?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (17,'If you had a previous episode of back pain, what helped in making your pain better? Please tick all options that apply');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (18,'Other than your back pain, do you experience other odd sensations in your back or legs (for example: crawling sensation, stinging, pressure) ');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (19,'Please tick all the areas where you experience this feeling:');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (20,'On average, how many hours do you sleep?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (21,'Does your back pain wake you up every night?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (22,'If you wake up with back pain, can you get back to sleep?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (23,'how strongly do you agree with this statement : ‘I believe that my job caused /contributed to my back pain’ ');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (24,'Do you feel supported by your boss and/or co-workers?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (25,'How is your back pain affecting your work?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (26,'Are you off work right now because of your back pain?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (27,'How long have you been off work?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (28,'How likely it is that you would return to work within six months?');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (29,'‘I can’t do my normal daily activities because of my back pain’');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (30,'‘My back pain is negatively affecting my social life’');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (31,'‘My back pain is affecting my relationship with my significant other’');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (32,'‘I don’t know what makes my back pain worse or what eases it ‘');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (33,'‘My back pain makes me feel stressed/anxious’');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (34,'‘Stress increases my back pain’');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (35,'‘Physical activity increases my back pain’');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (36,'‘Since my back pain started, I feel more tired’');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (37,'‘I have lost interest and/or pleasure in doing things because of my back pain’');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (38,'‘I don’t think my family and friends understand what I’m going through with my back pain.’');
-INSERT INTO Question ('QuestionID','QuestionText' ) VALUES (39,'‘I don’t think my back pain will ever go away.’');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType' ) VALUES (1,'Do you know what caused your current back pain?','Single');
+INSERT INTO Question ('QuestionID','QuestionText''QuestionType' ) VALUES (2,'If yes, choose an option from the list below:','Single');
+INSERT INTO Question ('QuestionID','QuestionText''QuestionType' ) VALUES (3,'What do you think is wrong with your back?','Text');
+INSERT INTO Question ('QuestionID','QuestionText''QuestionType' ) VALUES (4,'If you have been treated for back pain, were you satisfied with your treatment?','Single');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (5,'What medication do you take to manage your back pain?, Please tick all apply ','Multiple');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (6,'How effective is the medication in reducing your back pain?','Single');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (7,'Where is your pain? Please tick all body areas that apply','Multiple');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (8,'Is your pain there all the time?', 'Single');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (9,'What type of pain is it? Please tick all options that apply', 'Multiple');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (10,'When is your pain at its worst?', 'Single');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (11,'Can you ease your back pain?');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (12,'How do you ease your back pain? Please tick all options that apply');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (13,'In general, is your back pain getting better, staying the same or getting worse?');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (14,'From the list below, please tick all the activities that make your pain worse. ');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (15,'From the list below, please tick all the activities that stop or decrease your pain. ');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (16,'Is this the first time you have experienced this type of pain?');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (17,'If you had a previous episode of back pain, what helped in making your pain better? Please tick all options that apply');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (18,'Other than your back pain, do you experience other odd sensations in your back or legs (for example: crawling sensation, stinging, pressure) ');
+INSERT INTO Question ('QuestionID','QuestionText''QuestionType' ) VALUES (19,'Please tick all the areas where you experience this feeling:');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (20,'On average, how many hours do you sleep?');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (21,'Does your back pain wake you up every night?');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (22,'If you wake up with back pain, can you get back to sleep?');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (23,'how strongly do you agree with this statement : ‘I believe that my job caused /contributed to my back pain’ ');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (24,'Do you feel supported by your boss and/or co-workers?');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (25,'How is your back pain affecting your work?');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (26,'Are you off work right now because of your back pain?');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (27,'How long have you been off work?');
+INSERT INTO Question ('QuestionID','QuestionText''QuestionType' ) VALUES (28,'How likely it is that you would return to work within six months?');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (29,'‘I can’t do my normal daily activities because of my back pain’');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (30,'‘My back pain is negatively affecting my social life’');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (31,'‘My back pain is affecting my relationship with my significant other’');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (32,'‘I don’t know what makes my back pain worse or what eases it ‘');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (33,'‘My back pain makes me feel stressed/anxious’');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (34,'‘Stress increases my back pain’');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (35,'‘Physical activity increases my back pain’');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (36,'‘Since my back pain started, I feel more tired’');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (37,'‘I have lost interest and/or pleasure in doing things because of my back pain’');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (38,'‘I don’t think my family and friends understand what I’m going through with my back pain.’');
+INSERT INTO Question ('QuestionID','QuestionText' 'QuestionType') VALUES (39,'‘I don’t think my back pain will ever go away.’');
 
 
 
