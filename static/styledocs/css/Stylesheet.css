@@ -1,7 +1,3 @@
-/* --- set location of page directory --------------------------------------- */
-.myCol {
-    border: 2px blue solid;
-}
 
 /* --- set location of page directory --------------------------------------- */
 .TopBar {
@@ -34,13 +30,4 @@
 /* --- set location of page directory --------------------------------------- */
 .contentLeft {
   margin: 20px;
-  color: blue;
-
-}
-.h1{
-  color:black;
-}
-
-.h3{
-  color:black;
 }
