@@ -27,7 +27,7 @@ def fetchingdata():
         answerData = cur.fetchall()
         conn.close()
 
-        return render_template('Template.html',questionData = questionData, answerData= answerData)
+        return render_template('SurveyAPainBehaviour.html',questionData = questionData, answerData= answerData)
 
     except:
         return 'there was an error'

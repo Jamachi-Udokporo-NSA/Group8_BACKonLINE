@@ -2,28 +2,17 @@
 
 
 {%block mainBlock%}
-<h2> Students</h2>
-<table border = 1>
-   <thead>
-      <td>ID</td>
-      <td>firstName</td>
-      <td>surname</td>
-      <td>termLocation</td>
-      <td>homeLocation</td>
-      <td>Public?</td>
-   </thead>
-
-   {% for row in data %}
-   <!-- A List of tuples so row is each item in the list
-        and then the index is the column number.-->
-      <tr>
-        <td>{{row[0]}}</td>
-        <td>{{row[1]}}</td>
-        <td>{{row[2]}}</td>
-        <td>{{row[3]}}</td>
-        <td>{{row[4]}}</td>
-        <td>{{row[5]}}</td>
-      </tr>
-   {% endfor %}
-</table>
+<h2> A: Pain behaviour </h2>
+<article class="contentLeft">
+  {% for Question in questionData %}
+    {% if Question[0] == 1 %}
+      <h3> {{ Question[0]}})  {{ Question[1]}} </h3>
+      <form action="/Template.html" method="get">
+        <input type="checkbox" name="" value=""> {{answerData[0][1]}} <br>
+        <input type="checkbox" name="" value="" checked> {{answerData[1][1]}} <br>
+        <input type="checkbox" name="" value="" checked> {{answerData[2][1]}} <br>
+        <!-- <input type="submit" value="Submit"> -->
+      </form>
+    {% endif %}
+  {% endfor %}
 {%endblock%}

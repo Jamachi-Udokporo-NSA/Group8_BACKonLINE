@@ -35,20 +35,7 @@
     </center></ContentRight>
 
     <ContentLeft class="contentLeft"><center>
-    <h2> A: Pain behaviour </h2>
-    <article class="contentLeft">
-      {% for Question in questionData %}
-        {% if Question[0] == 1 %}
-          <h3> {{ Question[0]}})  {{ Question[1]}} </h3>
-          <form action="/Template.html" method="get">
-            <input type="checkbox" name="" value=""> {{answerData[0][1]}} <br>
-            <input type="checkbox" name="" value="" checked> {{answerData[1][1]}} <br>
-            <input type="checkbox" name="" value="" checked> {{answerData[2][1]}} <br>
-            <!-- <input type="submit" value="Submit"> -->
-          </form>
-        {% endif %}
-      {% endfor %}
-
+      {% block mainBlock%}Page under construction. {%endblock%}
     </article></center></ContentLeft>
 
   </content>
