@@ -5,9 +5,14 @@
 <h2> A: Pain behaviour </h2>
 <article class="contentLeft">
   {% for Question in questionData %}
+
+
     <form action="/Template.html" method="get">
       <h3> {{ Question[0]}})  {{ Question[1]}} </h3>
 
+        {% if Question[0] == 3 %}
+          <textarea rows="5" cols = "50" name = "text">Response here</textarea>
+        {% endif %}
 
         <div style = "color:blue">
         {% for Answer in answerData %}
