@@ -24,13 +24,30 @@ CREATE TABLE IF NOT EXISTS `Staff` (
 	`Password`	TEXT NOT NULL
 );
 
-INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin');
-
 CREATE TABLE IF NOT EXISTS `Question` (
 	`QuestionID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	`QuestionText`TEXT NOT NULL
-	'QuestionType'TEXT NOT NULL
+	`QuestionText`TEXT NOT NULL,
+	'QuestionType'TEXT NOT NULL,
+	'QuestionGroup'TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS `Patient` (
+	`PatientID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`Email`	TEXT NOT NULL,
+	`Password`	TEXT NOT NULL,
+	`FirstName`	TEXT NOT NULL,
+	`SurName`	TEXT NOT NULL,
+	`Age`	NUMERIC NOT NULL,
+	`Gender`	TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS `Answer` (
+	`AnswerID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`AnswerText`	TEXT NOT NULL,
+	`Score`	INTEGER NOT NULL,
+	`QuestionID`	INTEGER NOT NULL
+);
+
+INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin');
 
 INSERT INTO Question ('QuestionID','QuestionText','QuestionType','QuestionGroup') VALUES (1,'Do you know what caused your current back pain?','Single',1);
 INSERT INTO Question ('QuestionID','QuestionText','QuestionType','QuestionGroup') VALUES (2,'If yes, choose an option from the list below:','Single',1);
@@ -71,25 +88,6 @@ INSERT INTO Question ('QuestionID','QuestionText','QuestionType','QuestionGroup'
 INSERT INTO Question ('QuestionID','QuestionText','QuestionType','QuestionGroup') VALUES (37,'‘I have lost interest and/or pleasure in doing things because of my back pain’','Single',15);
 INSERT INTO Question ('QuestionID','QuestionText','QuestionType','QuestionGroup') VALUES (38,'‘I don’t think my family and friends understand what I’m going through with my back pain.’', 'Single',15);
 INSERT INTO Question ('QuestionID','QuestionText','QuestionType','QuestionGroup') VALUES (39,'‘I don’t think my back pain will ever go away.’','Single',15);
-
-
-
-CREATE TABLE IF NOT EXISTS `Patient` (
-	`PatientID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	`Email`	TEXT NOT NULL,
-	`Password`	TEXT NOT NULL,
-	`FirstName`	TEXT NOT NULL,
-	`SurName`	TEXT NOT NULL,
-	`Age`	NUMERIC NOT NULL,
-	`Gender`	TEXT NOT NULL
-);
-CREATE TABLE IF NOT EXISTS `Answer` (
-	`AnswerID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	`AnswerText`	TEXT NOT NULL,
-	`Score`	INTEGER NOT NULL,
-	 FOREIGN KEY(Answer) REFERENCES Answer(QuestionID) INTEGER NOT NULL
-);
-
 
 INSERT INTO `Answer`(`AnswerID`,`AnswerText`, 'Score', 'QuestionID' ) VALUES (1,'Yes',0,1);
 INSERT INTO `Answer`(`AnswerID`,`AnswerText`, 'Score', 'QuestionID' ) VALUES (2,'No',2,1);
