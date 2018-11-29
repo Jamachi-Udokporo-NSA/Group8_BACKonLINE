@@ -94,8 +94,8 @@ def getSurveyD():
 
 @app.route("/Welcome", methods = ['GET'])
 def returnwel():
-    if request.method == 'GET':
-        return render_template('WelcomePage.html')
+        if request.method == 'GET':
+                return render_template('WelcomePage.html')
 
 @app.route("/Thank", methods = ['GET'])
 def returnthank():
