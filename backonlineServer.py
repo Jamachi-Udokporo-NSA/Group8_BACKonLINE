@@ -97,5 +97,10 @@ def returnwel():
     if request.method == 'GET':
         return render_template('WelcomePage.html')
 
+@app.route("/Thank", methods = ['GET'])
+def returnthank():
+        if request.method == 'GET':
+                return render_template ('Thankyoupage.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
