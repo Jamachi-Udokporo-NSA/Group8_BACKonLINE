@@ -1,0 +1,34 @@
+{%extends 'Template.html'%}
+{%block mainBlock%}
+
+<!--- A navigation bar for the python section ---------------------------->
+<ContentRight class="contentRight"><center>
+  <h2>Survey progress</h2>
+  <a href="/Survey"><b>A: Pain behaviour</b></a><br><br>
+</center></ContentRight>
+
+<article class="contentLeft">
+
+  <form action=/Survey method="get">
+  {% for Question in questionData %}
+
+      <h3> {{ Question[0]}})  {{ Question[1]}} </h3>
+
+        {% if Question[2] == "Text" %}
+          <textarea rows="5" cols = "50" name = "text">Response here</textarea>
+
+        {% else %}
+          <div style = "color:blue">
+          {% for Answer in answerData %}
+            {% if Answer[3] == Question[0] %}
+              <input type="checkbox" name="" value=""> {{Answer[1]}}<br>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        </div>
+
+    {% endfor %}
+    <br><br><button>Continue</button>
+  </form>
+
+{%endblock%}

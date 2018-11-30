@@ -1,20 +1,23 @@
 {%extends 'Template.html'%}
-
-
 {%block mainBlock%}
-<h2> A: Pain behaviour </h2>
+
+<!--- A navigation bar for the python section ---------------------------->
+<ContentRight class="contentRight"><center>
+  <h2>Survey progress</h2>
+  <a href="/Survey"><b>A: Pain behaviour</b></a><br><br>
+</center></ContentRight>
+
 <article class="contentLeft">
+
+  <form action=/Survey/ method="get">
   {% for Question in questionData %}
 
-
-    <form action="/Template.html" method="get">
       <h3> {{ Question[0]}})  {{ Question[1]}} </h3>
 
-        {% if Question[0] == 3 %}
+        {% if Question[2] == "Text" %}
           <textarea rows="5" cols = "50" name = "text">Response here</textarea>
-        {% endif %}
 
-        {% if Question[0] != 3 %}
+        {% else %}
           <div style = "color:blue">
           {% for Answer in answerData %}
             {% if Answer[3] == Question[0] %}
@@ -24,8 +27,8 @@
         {% endif %}
         </div>
 
-    </form>
-  {% endfor %}
-  <button type="submit">submit</button>
+    {% endfor %}
+    <br><br><button>Continue</button>
+  </form>
 
 {%endblock%}
