@@ -4,13 +4,20 @@ import sqlite3
 
 app = Flask(__name__)
 
+@app.route("/login")
+def getlogin():
+    # if request.method== 'GET':
+        return render_template('registration.html')
+
+
 DATABASE = 'Database/backonlinedatabase.db'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 QuestGroup = 0
-@app.route("/Main", methods=['GET'])
-def returnFirst():
-    if request.method == 'GET':
-        return render_template('Template.html')
+# @app.route("/Main", methods=['GET'])
+# def returnFirst():
+#     if request.method == 'GET':
+#         return render_template('Template.html')
+
 
 @app.route("/Survey")
 def getSurvey():
