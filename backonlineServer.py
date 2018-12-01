@@ -4,9 +4,9 @@ import sqlite3
 
 app = Flask(__name__)
 
-@app.route("/login")
+@app.route("/login", methods=['GET'])
 def getlogin():
-    # if request.method== 'GET':
+    if request.method== 'GET':
         return render_template('registration.html')
 
 

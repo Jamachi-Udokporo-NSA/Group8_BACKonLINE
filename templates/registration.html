@@ -1,43 +1,88 @@
 {%extends 'Template.html'%}
 {%block mainBlock%}
 
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</button>
+<button class="open button" onclick="login()">Login</button>
 
-<div id="id01" class="modal">
+<div class="form">
 
-  <form class="modal-content animate" action="/Survey">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      </div>
+  <form action="/login" method="GET" id="popup">
 
-    <div class="container">
       <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+      <input type="text" placeholder="Enter Email" name="email">
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" placeholder="Enter Password" name="psw">
 
       <button type="submit">Login <a href "/Survey"</a> </button>
-      <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-     </div>
+
+        <button type="button" class="cancelbtn" onclick="CancelForm()">Cancel</button>
+</div>
    </form>
- </div>
 
-    <script>
+
+<script>
     // Get the modal
-    var modal = document.getElementById('id01');
+  function login(){
+  document.getElementById('popup').style.display="block";
+}
+  function CancelForm(){
+    document.getElementById('popup').style.display="none";
+  }
 
-    // When the patient clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    </script>
+</script>
+<!--
+<section>
+<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</button>
+</section>
+
+<div id="id02" class="modal">
+
+  <form class="modal-content">
+    <div>
+  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+   </div>
+
+   <div class="pick">
+        <label for="First Name"><b>First Name</b></label>
+        <input type="text" placeholder="Enter your First name" name="First Name" required>
+
+        <label for="Surname"><b>Surname</b></label>
+        <input type="text" placeholder="Enter your Surname" name="Surname" required>
+
+        <label for="Email"><b>Email</b></label>
+        <input type="Email" placeholder="Enter your Email Address" name="Email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="Password" placeholder="Create a Password" name="psw" required>
+
+        <label for="Age"><b>Age</b></label>
+        <input type="number" placeholder="Enter your Age" name="Age" value="" required>
+
+        <select name="Gender">
+        <option value="None selected">Please use the down arrow to select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Not Mention"> Not Mention</option>
+        </select>
+        </div>
+
+        <div class= "buttonfix">
+          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="close">Cancel</button>
+          <button type="submit" class="Register">Register <a href= "/login"</a> </button>
+       </div>
+    </form>
+  </div>
+
+  <script>
+  // Get the modal
+  var modal = document.getElementById('id02');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  </script> -->
+
 {%endblock%}
