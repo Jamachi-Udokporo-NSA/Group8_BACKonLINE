@@ -1,28 +1,28 @@
 {%extends 'Template.html'%}
-{%block mainBlock%}
+ {%block mainBlock%}
 
-<button class="open button" onclick="login()">Login</button>
+<button class="open button" onclick="openlogin()">Login</button>
 
-<div class="form">
+<div class="form-picker">
 
-  <form action="/login" method="GET" id="popup">
+  <form action="/Survey" method="GET" id="popup" class="form-container">
 
-      <label for="email"><b>Email</b></label>
+      <label for="email"><br>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email">
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw">
+      <label for="ps"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="ps">
 
       <button type="submit">Login <a href "/Survey"</a> </button>
 
         <button type="button" class="cancelbtn" onclick="CancelForm()">Cancel</button>
 </div>
-   </form>
+</form>
 
 
 <script>
-    // Get the modal
-  function login(){
+    // Get the popup
+  function openlogin(){
   document.getElementById('popup').style.display="block";
 }
   function CancelForm(){
@@ -30,35 +30,34 @@
   }
 
 </script>
-<!--
-<section>
-<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</button>
-</section>
 
-<div id="id02" class="modal">
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register</button>
 
-  <form class="modal-content">
+
+<div id="id01" class="modal">
+
+  <form class="modal-content" method="GET">
     <div>
-  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <span onclick="document.getElementById('id01').style.display='block'" class="close" title="Close Modal">&times;</span>
    </div>
 
    <div class="pick">
         <label for="First Name"><b>First Name</b></label>
-        <input type="text" placeholder="Enter your First name" name="First Name" required>
+        <input type="text" placeholder="Enter your First name" name="First Name">
 
         <label for="Surname"><b>Surname</b></label>
-        <input type="text" placeholder="Enter your Surname" name="Surname" required>
+        <input type="text" placeholder="Enter your Surname" name="Surname">
 
         <label for="Email"><b>Email</b></label>
-        <input type="Email" placeholder="Enter your Email Address" name="Email" required>
+        <input type="Email" placeholder="Enter your Email Address" name="Email">
 
         <label for="psw"><b>Password</b></label>
-        <input type="Password" placeholder="Create a Password" name="psw" required>
+        <input type="Password" placeholder="Create a Password" name="psw">
 
         <label for="Age"><b>Age</b></label>
-        <input type="number" placeholder="Enter your Age" name="Age" value="" required>
+        <input type="number" placeholder="Enter your Age" name="Age" value="">
 
-        <select name="Gender">
+        <select name="Gender"><b>Gender</b>
         <option value="None selected">Please use the down arrow to select</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
@@ -67,8 +66,8 @@
         </div>
 
         <div class= "buttonfix">
-          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="close">Cancel</button>
-          <button type="submit" class="Register">Register <a href= "/login"</a> </button>
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="close">Cancel</button>
+          <button type="submit" class="Register">Submit</a> </button>
        </div>
     </form>
   </div>
@@ -83,6 +82,6 @@
           modal.style.display = "none";
       }
   }
-  </script> -->
+  </script>
 
 {%endblock%}
