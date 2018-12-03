@@ -7,7 +7,7 @@ DATABASE = 'Database/backonlinedatabase.db'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 QuestGroup = 0
 
-@app.route("/", methods=['GET'])
+@app.route("/Form", methods=['GET'])
 def getlogin():
     if request.method== 'GET':
         return render_template('registration.html')
