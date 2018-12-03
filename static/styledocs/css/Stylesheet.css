@@ -2,7 +2,7 @@
 .TopBar {
   border-radius: 23px;
   width: 100%;
-  background-color: grey;
+  background-color: Black;
   position: relative;z-index:1000;
   float:  left;
 }
