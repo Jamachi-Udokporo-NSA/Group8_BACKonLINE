@@ -26,12 +26,14 @@ def getWelcome():
     if request.method== 'GET':
         return render_template('WelcomePage.html')
 
-@app.route("/Survey")
-def getSurvey():
-    global QuestGroup
+@app.route("/Thankyou")
+def getThankYou():
+    return render_template('ThankYoupage.html')
 
+@app.route("/Survey/<NumT>")
+def getSurvey(NumT):
     try:
-        QuestGroup += 1
+        QuestGroup = int(NumT)
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
@@ -44,11 +46,12 @@ def getSurvey():
         answerData = cur.fetchall()
         conn.close()
 
-        if(QuestGroup<15):
-            return render_template('Survey.html',questionData = questionData, answerData= answerData)
+        QuestGroup +=1
+
+        if(QuestGroup<16):
+            return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
         else:
-            QuestGroup -= 1
             return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData)
 
     except:
