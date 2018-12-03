@@ -12,6 +12,15 @@ def getlogin():
     if request.method== 'GET':
         return render_template('registration.html')
 
+@app.route("/Patient",
+def getpatient():
+    conn = sqlite3.connect(DATABASE)
+    cur = conn.cursor()
+    cur.execute("INSERT INTO;")
+    answerData = cur.fetchall()
+    conn.close()
+
+
 @app.route("/Welcome", methods=['GET'])
 def getWelcome():
     if request.method== 'GET':
