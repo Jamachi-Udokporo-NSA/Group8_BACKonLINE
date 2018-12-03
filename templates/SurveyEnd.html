@@ -9,7 +9,7 @@
 
 <article class="contentLeft">
 
-  <form action=/Survey/ method="get">
+  <form action=/Thankyou method="get">
   {% for Question in questionData %}
 
       <h3> {{ Question[0]}})  {{ Question[1]}} </h3>
@@ -28,7 +28,7 @@
         </div>
 
     {% endfor %}
-    <br><br><button>Continue</button>
+    <br><br><button>Submit</button>
   </form>
 
 {%endblock%}
