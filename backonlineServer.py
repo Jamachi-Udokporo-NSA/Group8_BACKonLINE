@@ -47,7 +47,7 @@ def getSurvey(NumT):
         answerData = cur.fetchall()
         conn.close()
 
-        if(QuestGroup<16):
+        if(QuestGroup<15):
             return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
         else:

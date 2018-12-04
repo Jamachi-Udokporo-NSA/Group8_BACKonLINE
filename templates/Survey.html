@@ -43,7 +43,10 @@
 
     {% endfor %}
     <br><br><button>Continue</button>
-  </form>
+
+  {% if questionNumber > 1 %}
     <br><a href="/SurveyB/{{questionNumber}}" class="button">Back</a>
+  {% endif %}
+  </form>
 
 {%endblock%}
