@@ -1,44 +1,70 @@
 {%extends 'Template.html'%}
- {%block mainBlock%}
+{%block mainBlock%}
+<!-- this is for login-->
+<form allign="center" action="/Welcome" class="form-container">
+  <h1>Login</h1>
 
- <form allign="center" action="/Welcome" class="form-container">
-   <h1>Login</h1>
+  <label for="email"><b>Email</b></label>
+  <input type="text" placeholder="Enter Email" name="email" required>
 
-   <label for="email"><b>Email</b></label>
-   <input type="text" placeholder="Enter Email" name="email" required>
+  <label for="psw"><b>Password</b></label>
+  <input type="password" placeholder="Enter Password" name="psw" required>
 
-   <label for="psw"><b>Password</b></label>
-   <input type="password" placeholder="Enter Password" name="psw" required>
+  <button type="submit" class="btn">Login</button>
+  <!-- <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
+</form>
+<!-- this is for registration--->
+<form action="/Form" method='post' allign="center" id='reg' onsubmit="return subreg()" class="form-container">
+  <br>
+  <h1>Register</h1>
+  <br><label for="FirstName"><b>First Name</b></label>
+  <input type="text" placeholder="Enter your First Name" name="FirstName" required>
 
-   <button type="submit" class="btn">Login</button>
-   <!-- <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
- </form>
+  <br><label for="SurName"><b>Surname</b></label>
+  <input type="text" placeholder="Enter your Last Name" name="SurName" required>
 
- <form allign="center" action="/login" class="form-container">
-   <br><h1>Register</h1>
-   <br><label for="First Name"><b>First Name</b></label>
-   <input type="text" placeholder="Enter your First Name" name="Fname" required>
+  <br><label for="Email"><b>Email</b></label>
+  <input type="text" placeholder="Enter Email" name="Email" required>
 
-   <br><label for="Surname"><b>Surname</b></label>
-   <input type="text" placeholder="Enter your Last Name" name="Sname" required>
+  <br><label for="Password"><b>Password</b></label>
+  <input type="Password" placeholder="Enter Password" name="Password" required>
 
-   <br><label for="email"><b>Email</b></label>
-   <input type="text" placeholder="Enter Email" name="email" required>
+  <br><label for="age"><b>Age</b></label>
+  <input type="INTEGER" placeholder="Enter your age" name="Age" required>
 
-   <br><label for="psw"><b>Password</b></label>
-   <input type="password" placeholder="Enter Password" name="psw" required>
+  <br><label for="Gender"><b>Please select your gender:</b></label>
+  <select name="Gender">
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Not mention">Not mention</option>
+  </select>
+  <br><button type="submit"  class="btn">Submit</button>
+  <!-- <br><button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
+</form>
+<span id='txt'> </span>
+<script>
+  function subreg() {
+    var Firstname = document.forms["reg"]["Firstname"].value;
+    var SurName = document.forms["reg"]["SurName"].value;
+    var Email = document.forms["reg"]["Email"].value;
+    var Password = document.forms["reg"]["Password"].value;
+    var Age = document.forms["reg"]["Age"].value;
+    var Gender = document.forms["reg"]["Gender"].value;
 
-   <br><label for="age"><b>Age</b></label>
-   <input type="INTEGER" placeholder="Enter your age" name="age" required>
-
-   <br><label for="Gender"><b>Please select your gender:</b></label>
-   <select name="Gender">
-       <option value="Male">Male</option>
-       <option value="Female">Female</option>
-       <option value="Not mention">Not mention</option>
-     </select>
-   <br><button type="submit" class="btn">Submit</button>
-   <!-- <br><button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
- </form>
-
+    params = 'Firstname=' + Firstname + '&SurName=' + SurName  + '&Email=' + Email+ '&Password=' + Password + '&Age=' + Age + '&Gender=' + Gender;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", '/Form', true); // true is asynchronous
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.onload = function() {
+      if (xhttp.readyState === 4 && xhttp.status === 200) {
+        console.log(xhttp.responseText);
+        document.getElementById("txt").innerHTML = xhttp.responseText;
+      } else {
+        console.error(xhttp.statusText);
+      }
+    };
+    xhttp.send(params);
+    return false;
+  }
+</script>
 {%endblock%}
