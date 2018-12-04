@@ -31,6 +31,7 @@
   margin: 20px;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -76,3 +77,14 @@
     /* .form-container .cancel {
       background-color: red;
     } */
+=======
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    padding: 3px;
+
+    text-decoration: none;
+    color: initial;
+}
+>>>>>>> 16006ea3292e7d8d1c382c1e027e15528afc1652
