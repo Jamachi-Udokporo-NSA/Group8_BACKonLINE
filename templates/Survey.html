@@ -3,8 +3,9 @@
 
 <!--- A navigation bar for the python section ---------------------------->
 <ContentRight class="contentRight"><center>
-  <h2>Survey progress</h2>
-  <a href="/Survey"><b>A: Pain behaviour</b></a><br><br>
+  <h2>Survey progress</h2><br>
+  <a href="/"><b>Log out</b></a><br>
+  <a href="/Survey/1"><b>Return to survey start</b></a><br><br>
 </center></ContentRight>
 
 <article class="contentLeft">
@@ -16,6 +17,14 @@
 
         {% if Question[2] == "Text" %}
           <textarea rows="5" cols = "50" name = "text">Response here</textarea>
+
+        {% else if Question[2] == "Single" %}
+          <div style = "color:blue">
+          {% for Answer in answerData %}
+            {% if Answer[3] == Question[0] %}
+              <input type="radio" name="" value=f"{{Answer[1]}}"> {{Answer[1]}}<br>
+            {% endif %}
+          {% endfor %}
 
         {% else %}
           <div style = "color:blue">
