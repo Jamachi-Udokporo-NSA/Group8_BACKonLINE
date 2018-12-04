@@ -7,25 +7,6 @@ DATABASE = 'Database/backonlinedatabase.db'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 QuestGroup = 0
 
-<<<<<<< HEAD
-# @app.route("/Form", methods=['GET'])
-# def getlogin():
-#     if request.method== 'GET':
-#         return render_template('registration.html')
-=======
-@app.route("/", methods=['GET'])
-def getlogin():
-    if request.method== 'GET':
-        return render_template('registration.html')
-
-#@app.route("/Patient",
-#def getpatient():
-#    conn = sqlite3.connect(DATABASE)
-#    cur = conn.cursor()
-#    cur.execute("INSERT INTO;")
-#    answerData = cur.fetchall()
-#    conn.close()
->>>>>>> 16006ea3292e7d8d1c382c1e027e15528afc1652
 
 
 @app.route("/Form", methods=['GET', 'POST'])
