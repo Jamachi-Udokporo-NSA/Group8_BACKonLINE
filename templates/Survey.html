@@ -5,8 +5,8 @@
 <ContentRight class="contentRight"><center>
   <h2>Survey progress</h2>
   <progress value="{{questionData[0][3]}}" max="15"></progress><br><br><br><Br>
-  <a href="/Survey/1"><b>Return to survey start</b></a><br><br>
-  <a href="/"><b>Log out</b></a><br>
+  <a href="/Survey/0" class="button"><b>Return to survey start</b></a><br><br>
+  <a href="/" class="button"><b>Log out</b></a><br>
 
 
 </center></ContentRight>
@@ -40,8 +40,10 @@
         {% endif %}
         </div>
 
+
     {% endfor %}
     <br><br><button>Continue</button>
   </form>
+    <br><a href="/SurveyB/{{questionNumber}}" class="button">Back</a>
 
 {%endblock%}

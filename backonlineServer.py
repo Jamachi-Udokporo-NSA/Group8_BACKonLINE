@@ -34,6 +34,7 @@ def getThankYou():
 def getSurvey(NumT):
     try:
         QuestGroup = int(NumT)
+        QuestGroup +=1
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
@@ -46,7 +47,31 @@ def getSurvey(NumT):
         answerData = cur.fetchall()
         conn.close()
 
-        QuestGroup +=1
+        if(QuestGroup<16):
+            return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+
+        else:
+            return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData)
+
+    except:
+        return 'there was an error'
+
+@app.route("/SurveyB/<NumT>")
+def getSurveyB(NumT):
+    try:
+        QuestGroup = int(NumT)
+        QuestGroup -=1
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
+        questionData = cur.fetchall()
+        conn.close()
+
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM Answer;")
+        answerData = cur.fetchall()
+        conn.close()
 
         if(QuestGroup<16):
             return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
@@ -56,6 +81,7 @@ def getSurvey(NumT):
 
     except:
         return 'there was an error'
+
 
 if __name__ == "__main__":
     app.run(debug=True)
