@@ -35,7 +35,7 @@ def getpatient():
             conn.close()
             return msg
 
-    
+
 @app.route("/Welcome", methods=['GET'])
 def getWelcome():
     if request.method== 'GET':
