@@ -5,7 +5,7 @@
   <h1>Login</h1>
 
   <label for="email"><b>Email</b></label>
-  <input type="text" placeholder="Enter Email" name="email" required>
+  <input type="text" placeholder="Enter Email" name="email" onclick="ValidateEmail("Email")"required>
 
   <label for="psw"><b>Password</b></label>
   <input type="password" placeholder="Enter Password" name="psw" required>
@@ -14,7 +14,7 @@
   <!-- <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
 </form>
 <!-- this is for registration--->
-<form action="/Form" method='post' allign="center" id='reg' onsubmit="return subreg()" class="form-container">
+<form action="/Form" method='post' name="myForm"  id='reg' onsubmit="return subreg()" class="form-container">
   <br>
   <h1>Register</h1>
   <br><label for="FirstName"><b>First Name</b></label>
@@ -24,34 +24,59 @@
   <input type="text" placeholder="Enter your Last Name" name="SurName" required>
 
   <br><label for="Email"><b>Email</b></label>
-  <input type="text" placeholder="Enter Email" name="Email" required>
+  <input type="text" placeholder="Enter Email" name="Email"required>
 
   <br><label for="Password"><b>Password</b></label>
-  <input type="Password" placeholder="Enter Password" name="Password" required>
+  <input type="Password" placeholder="Create a Password" name="Password" onclick="ValidateEmail(document.myForm.Email)"required>
 
   <br><label for="age"><b>Age</b></label>
-  <input type="INTEGER" placeholder="Enter your age" name="Age" required>
+  <input type="INTEGER" placeholder="Enter your age" name="Age" onclick="return validateForm()" required>
 
   <br><label for="Gender"><b>Please select your gender:</b></label>
-  <select name="Gender">
+  <select class="style" name="Gender">
     <option value="Male">Male</option>
     <option value="Female">Female</option>
     <option value="Not mention">Not mention</option>
   </select>
-  <br><button type="submit"  class="btn">Submit</button>
-  <!-- <br><button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
+  <br><button type="submit"  class="btn" >Submit</button>
+
 </form>
 <span id='txt'> </span>
 <script>
+  function validateForm(){
+
+  var z = document.forms["myForm"]["Age"].value;
+
+  if(!/^[0-9]+$/.test(z)){
+    alert("Please remember to only enter numbers to state your Age, Thankyou!")
+  }
+}
+
+   function ValidateEmail(inputText)
+{
+   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+   if(inputText.value.match(mailformat))
+{
+      document.myForm.Email.focus();
+   return true;
+}
+   else
+{
+     alert("You have entered an invalid email address!");
+     document.myForm.Email.focus();
+   return false;
+}
+}
+
   function subreg() {
-    var Firstname = document.forms["reg"]["Firstname"].value;
+    var FirstName = document.forms["reg"]["FirstName"].value;
     var SurName = document.forms["reg"]["SurName"].value;
     var Email = document.forms["reg"]["Email"].value;
     var Password = document.forms["reg"]["Password"].value;
     var Age = document.forms["reg"]["Age"].value;
     var Gender = document.forms["reg"]["Gender"].value;
 
-    params = 'Firstname=' + Firstname + '&SurName=' + SurName  + '&Email=' + Email+ '&Password=' + Password + '&Age=' + Age + '&Gender=' + Gender;
+    params = 'FirstName=' + FirstName + '&SurName=' + SurName  + '&Email=' + Email+ '&Password=' + Password + '&Age=' + Age + '&Gender=' + Gender;
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", '/Form', true); // true is asynchronous
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
