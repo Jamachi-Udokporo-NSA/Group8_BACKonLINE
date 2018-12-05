@@ -12,13 +12,10 @@ def getlogin():
     if request.method== 'GET':
         return render_template('registration.html')
 
-#@app.route("/Patient",
-#def getpatient():
-#    conn = sqlite3.connect(DATABASE)
-#    cur = conn.cursor()
-#    cur.execute("INSERT INTO;")
-#    answerData = cur.fetchall()
-#    conn.close()
+@app.route("/Admin", methods=['GET'])
+def getAdmin():
+    if request.method== 'GET':
+        return render_template('Admin.html')
 
 @app.route("/Form", methods=['GET', 'POST'])
 def getpatient():
