@@ -17,6 +17,12 @@ def getAdmin():
     if request.method== 'GET':
         return render_template('Admin.html')
 
+@app.route("/Select", methods=['GET'])
+def getSelect():
+    if request.method== 'GET':
+        return render_template('Select_patient_answer.html')
+
+
 @app.route("/Form", methods=['GET', 'POST'])
 def getpatient():
     if request.method == 'GET':
