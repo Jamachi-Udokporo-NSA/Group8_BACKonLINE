@@ -20,9 +20,6 @@ def getlogin():
 #    answerData = cur.fetchall()
 #    conn.close()
 
-
-<<<<<<< HEAD
-=======
 @app.route("/Form", methods=['GET', 'POST'])
 def getpatient():
     if request.method == 'GET':
@@ -49,8 +46,6 @@ def getpatient():
             conn.close()
             return msg
 
-
->>>>>>> 7731c43a2080edf4c7dbf97146d4d112ee0a05d4
 @app.route("/Welcome", methods=['GET'])
 def getWelcome():
     if request.method== 'GET':
