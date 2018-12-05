@@ -17,22 +17,24 @@
 
       <h3> {{ Question[0]}})  {{ Question[1]}} </h3>
 
-        {% if Question[2] == "Text" %}
-          <textarea rows="5" cols = "50" name = "text">Response here</textarea>
+        <div style = "color:blue">
+        {% for Answer in answerData %}
+          {% if Answer[3] == Question[0] %}
+            <input type="checkbox" name="group1" value=""> {{Answer[1]}}<br>
+          {% endif %}
+        {% endfor %}
 
-        {% else %}
-          <div style = "color:blue">
-          {% for Answer in answerData %}
-            {% if Answer[3] == Question[0] %}
-              <input type="checkbox" name="" value=""> {{Answer[1]}}<br>
-            {% endif %}
-          {% endfor %}
-        {% endif %}
         </div>
 
     {% endfor %}
     <br><br><button>Submit</button>
     <br><a href="/SurveyB/{{questionNumber}}" class="button">Back</a>
   </form>
+
+  <script>
+  $('input[type="checkbox"]').on('change', function() {
+    $('input[name="' + this.name + '"]').not(this).prop('checked', false);
+  });
+  </script>
 
 {%endblock%}

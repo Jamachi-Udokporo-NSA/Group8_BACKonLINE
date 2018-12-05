@@ -43,6 +43,9 @@
 </form>
 <span id='txt'> </span>
 <script>
+//reference adpated form: https://stackoverflow.com/questions/10713749/javascript-validation-numbers-only
+
+
   function validateForm(){
 
   var z = document.forms["myForm"]["Age"].value;
@@ -51,7 +54,8 @@
     alert("Please remember to only enter numbers to state your Age, Thankyou!")
   }
 }
-
+//end refernce
+// reference adapted from: https://www.w3resource.com/javascript/form/email-validation.php
    function ValidateEmail(inputText)
 {
    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -67,7 +71,7 @@
    return false;
 }
 }
-
+//end reference
   function subreg() {
     var FirstName = document.forms["reg"]["FirstName"].value;
     var SurName = document.forms["reg"]["SurName"].value;

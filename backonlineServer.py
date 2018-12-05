@@ -7,7 +7,18 @@ DATABASE = 'Database/backonlinedatabase.db'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 QuestGroup = 0
 
+@app.route("/", methods=['GET'])
+def getlogin():
+    if request.method== 'GET':
+        return render_template('registration.html')
 
+#@app.route("/Patient",
+#def getpatient():
+#    conn = sqlite3.connect(DATABASE)
+#    cur = conn.cursor()
+#    cur.execute("INSERT INTO;")
+#    answerData = cur.fetchall()
+#    conn.close()
 
 @app.route("/Form", methods=['GET', 'POST'])
 def getpatient():
@@ -34,7 +45,6 @@ def getpatient():
         finally:
             conn.close()
             return msg
-
 
 @app.route("/Welcome", methods=['GET'])
 def getWelcome():
@@ -66,7 +76,7 @@ def getSurvey(NumT):
             return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
         else:
-            return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData)
+            return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
     except:
         return 'there was an error'
@@ -76,6 +86,7 @@ def getSurveyB(NumT):
     try:
         QuestGroup = int(NumT)
         QuestGroup -=1
+
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
@@ -92,7 +103,7 @@ def getSurveyB(NumT):
             return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
         else:
-            return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData)
+            return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
     except:
         return 'there was an error'
