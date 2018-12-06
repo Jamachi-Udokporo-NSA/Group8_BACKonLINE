@@ -61,7 +61,7 @@ def getThankYou():
 
 @app.route("/Survey/<NumT>")
 def getSurvey(NumT):
-    try:
+    #try:
         QuestGroup = int(NumT)
         QuestGroup +=1
         conn = sqlite3.connect(DATABASE)
@@ -82,8 +82,8 @@ def getSurvey(NumT):
         else:
             return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
-    except:
-        return 'there was an error'
+    #except:
+        #return 'there was an error'
 
 @app.route("/SurveyB/<NumT>")
 def getSurveyB(NumT):
