@@ -7,10 +7,11 @@ DATABASE = 'Database/backonlinedatabase.db'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 QuestGroup = 0
 
-@app.route("/", methods=['GET'])
-def getlogin():
+
+@app.route("/First", methods=['GET'])
+def getFirst():
     if request.method== 'GET':
-        return render_template('registration.html')
+        return render_template('First.html')
 
 @app.route("/Admin", methods=['GET'])
 def getAdmin():
