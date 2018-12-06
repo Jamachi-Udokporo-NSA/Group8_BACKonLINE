@@ -37,9 +37,9 @@ def Formprocesst():
         print(Patient_data)
 
         for elementList in Patient_data:
-            for element in elementList:
-                if (str(element[0]) == Email and str(element[1]) == Password):
-                    return render_template('WelcomePage.html')
+                for element in elementList:
+                        if element[0] == Email and element[1] == Password:
+                                return render_template('WelcomePage.html')
 
         # return render_template('registration.html')
 
