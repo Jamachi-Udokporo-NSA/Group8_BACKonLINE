@@ -41,7 +41,7 @@ def Formprocesst():
                 if (str(element[0]) == Email and str(element[1]) == Password):
                     return render_template('WelcomePage.html')
 
-        return render_template('registration.html')
+        # return render_template('registration.html')
 
 
 @app.route("/Form", methods=['GET', 'POST'])
