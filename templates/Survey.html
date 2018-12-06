@@ -1,6 +1,9 @@
 {%extends 'Template.html'%}
 {%block mainBlock%}
 
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
 <!--- A navigation bar for the python section ---------------------------->
 <ContentRight class="contentRight"><center>
   <h2>Survey progress</h2>
@@ -25,7 +28,7 @@
           <div style = "color:blue">
           {% for Answer in answerData %}
             {% if Answer[3] == Question[0] %}
-              <input type="radio" name="" value=f"{{Answer[1]}}"> {{Answer[1]}}<br>
+              <input type="radio" name="{{ Question[0]}}" value="{{Answer[1]}}"> {{Answer[1]}}<br>
             {% endif %}
           {% endfor %}
         {% endif %}
@@ -35,7 +38,7 @@
 
           {% for Answer in answerData %}
             {% if Answer[3] == Question[0] %}
-              <input type="radio" name="" value=""> {{Answer[1]}}<br>
+              <input type="checkbox" name={{Question[0]}} value={{Answer[1]}}> {{Answer[1]}}<br>
             {% endif %}
           {% endfor %}
         {% endif %}
@@ -49,5 +52,11 @@
     <br><a href="/SurveyB/{{questionNumber}}" class="button">Back</a>
   {% endif %}
   </form>
+
+  <script>
+  $('input[type="checkbox"]').on('change', function() {
+    $('input[name="' + this.name + '"]').not(this).prop('checked', false);
+  });
+  </script>
 
 {%endblock%}
