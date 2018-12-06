@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `Survey` (
 	`SurveyID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`Date`	TEXT NOT NULL,
 	`TotalScore`	INTEGER NOT NULL,
-	`PateintID`	INTEGER NOT NULL
+	`PatientID`	INTEGER NOT NULL
 );
 CREATE TABLE IF NOT EXISTS `Staff` (
 	`StaffID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -46,6 +46,15 @@ CREATE TABLE IF NOT EXISTS `Answer` (
 	`Score`	INTEGER NOT NULL,
 	`QuestionID`	INTEGER NOT NULL
 );
+
+-- dummy data
+INSERT INTO UserAnswer ('UserAnswerID', 'AnswerID', 'AnswerScore', 'SurveyID', 'AnswerText') VALUES (1,1,0,1,'Yes');
+INSERT INTO UserAnswer ('UserAnswerID', 'AnswerID', 'AnswerScore', 'SurveyID', 'AnswerText') VALUES (2,4,1,2,'Car accident');
+INSERT INTO UserAnswer ('UserAnswerID', 'AnswerID', 'AnswerScore', 'SurveyID', 'AnswerText') VALUES (3,13,0,3,'Yes, I was satisfied with the treatment');
+INSERT INTO Survey ('SurveyID','Date', 'TotalScore', 'PatientID') VALUES (1,03/10/2010,0,1);
+INSERT INTO Survey ('SurveyID','Date', 'TotalScore', 'PatientID') VALUES (2,23/03/2012,1,1);
+INSERT INTO Survey ('SurveyID','Date', 'TotalScore', 'PatientID') VALUES (3,05/04/2015,0,1);
+-- dummy data
 
 INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin');
 
