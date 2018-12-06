@@ -2,14 +2,8 @@
 {%block mainBlock%}
 
 <head>
-<<<<<<< HEAD
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" > </script>
-</head>
-
-=======
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
->>>>>>> 6b2aed5ecf47b9e1202b65f41541bf285c9c4d20
 <!--- A navigation bar for the python section ---------------------------->
 <ContentRight class="contentRight"><center>
   <h2>Survey progress</h2>
@@ -29,11 +23,7 @@
         <div style = "color:blue">
         {% for Answer in answerData %}
           {% if Answer[3] == Question[0] %}
-<<<<<<< HEAD
-            <input type="checkbox" name="{{Question[0]}}" value="{{Answer[1]}}"> {{Answer[1]}}<br>
-=======
             <input type="checkbox" name={{Question[0]}} value={{Answer[1]}}> {{Answer[1]}}<br>
->>>>>>> 6b2aed5ecf47b9e1202b65f41541bf285c9c4d20
           {% endif %}
         {% endfor %}
 
