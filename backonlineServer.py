@@ -23,6 +23,26 @@ def getSelect():
     if request.method== 'GET':
         return render_template('Select_patient_answer.html')
 
+@app.route("/FormProcessing", methods=['GET', 'POST'])
+def Formprocesst():
+    if request.method== 'GET':
+        Email = request.form.get('Email', default="Error")
+        Password = request.form.get('Password', default="Error")
+
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT Email, Password FROM Patient")
+        Patient_data= cur.fetchall()
+        conn.close()
+        print(Patient_data)
+
+        for elementList in Patient_data:
+            for element in elementList:
+                if (str(element[0]) == Email and str(element[1]) == Password):
+                    return render_template('WelcomePage.html')
+
+        return render_template('registration.html')
+
 
 @app.route("/Form", methods=['GET', 'POST'])
 def getpatient():
