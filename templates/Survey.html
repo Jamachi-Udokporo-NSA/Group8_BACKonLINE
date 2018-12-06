@@ -24,14 +24,14 @@
         {% if Question[2] == "Text" %}
           <textarea rows="5" cols = "50" name = "text" placeholder="Response here"></textarea>
 
-        {% if Question[2] == "Single" %}
+        <!-- {% if Question[2] == "Single" %}
           <div style = "color:blue">
           {% for Answer in answerData %}
             {% if Answer[3] == Question[0] %}
               <input type="radio" name="{{ Question[0]}}" value="{{Answer[1]}}"> {{Answer[1]}}<br>
             {% endif %}
           {% endfor %}
-        {% endif %}
+        {% endif %}  -->
 
         {% else %}
           <div style = "color:blue">
