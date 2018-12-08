@@ -18,6 +18,30 @@ def getAdmin():
     if request.method== 'GET':
         return render_template('Admin.html')
 
+@app.route("/Process", methods=['GET', 'POST'])
+def AllAdmin():
+    if request.method== 'GET':
+        Email = request.form.get('Email', default="Error")
+        Password = request.form.get('Password', default="Error")
+        print("Validating")
+        return render_template('Admin.html')
+
+    if request.method == 'POST':
+        Email = request.form.get('email', default="Error")
+        Password = request.form.get('psw', default="Error")
+        print(Email, Password)
+
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT Email, Password FROM Staff WHERE Email=? AND Password=?",[Email,Password])
+        Login_admin= cur.fetchall()
+        conn.close()
+        print(Login_admin)
+        if Login_admin != []:
+            if Email == Login_admin[0][0] and Password == Login_admin[0][1]:
+                return render_template('Select_patient_answer.html')
+        return render_template('Admin.html')
+
 @app.route("/Select", methods=['GET', 'POST'])
 def getSelect():
     if request.method== 'GET':
