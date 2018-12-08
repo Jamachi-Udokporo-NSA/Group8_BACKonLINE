@@ -18,10 +18,25 @@ def getAdmin():
     if request.method== 'GET':
         return render_template('Admin.html')
 
-@app.route("/Select", methods=['GET'])
+@app.route("/Select", methods=['GET', 'POST'])
 def getSelect():
     if request.method== 'GET':
         return render_template('Select_patient_answer.html')
+    if request.method =='POST':
+        try:
+                PatientID = request.form.get('PatientID', default="Error") #rem: args for get form for post
+                conn = sqlite3.connect(DATABASE)
+                cur = conn.cursor()
+                # cur.execute("SELECT * FROM Students WHERE surname=? AND public = 'True';", [surname])
+                cur.execute("SELECT * FROM Patient WHERE PatientID=? ;", [PatientID])
+                data = cur.fetchall()
+                print(data)
+        except:
+                print('there was an error', data)
+                conn.close()
+        finally:
+                conn.close()
+                return str(data)
 
 @app.route("/FormProcessing", methods=['GET' ,'POST'])
 def Formprocesst():

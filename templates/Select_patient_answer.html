@@ -1,10 +1,10 @@
 {% extends 'Template.html' %}
 {%block mainBlock%}
-<form allign="center" action="" class="form-container">
+<form allign="center" action="/Select" class="form-container" method="POST">
   <h1>Patient Record</h1>
 
-  <label for="email"><b>PatientID</b></label>
-  <input type="text" placeholder="Enter the PateientID" name="">
+  <label for="email"><b>Patient ID</b></label>
+  <input type="text" placeholder="Enter the Patient" name="PatientID">
 
   <button type="submit" class="btn">View Patient</button>
 </form>
