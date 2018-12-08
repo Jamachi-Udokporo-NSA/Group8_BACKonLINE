@@ -27,7 +27,6 @@ def getSelect():
                 PatientID = request.form.get('PatientID', default="Error") #rem: args for get form for post
                 conn = sqlite3.connect(DATABASE)
                 cur = conn.cursor()
-                # cur.execute("SELECT * FROM Students WHERE surname=? AND public = 'True';", [surname])
                 cur.execute("SELECT * FROM Patient WHERE PatientID=? ;", [PatientID])
                 data = cur.fetchall()
                 print(data)
