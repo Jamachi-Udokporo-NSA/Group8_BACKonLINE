@@ -51,15 +51,27 @@ def getSelect():
                 PatientID = request.form.get('PatientID', default="Error") #rem: args for get form for post
                 conn = sqlite3.connect(DATABASE)
                 cur = conn.cursor()
-                cur.execute("SELECT * FROM Patient WHERE PatientID=? ;", [PatientID])
+                cur.execute("SELECT PatientID, FirstName, SurName, Email, Age, Gender FROM Patient WHERE PatientID=? ;", [PatientID])
                 data = cur.fetchall()
                 print(data)
+                cur.execute("SELECT SurveyID, Date, TotalScore, PatientID FROM Survey WHERE PatientID=? ;", [PatientID])
+                Surv = cur.fetchall()
+                print(Surv)
+                cur.execute("SELECT UserAnswerID, AnswerID, AnswerScore, SurveyID, AnswerText, PatientID FROM UserAnswer WHERE PatientID=? ;", [PatientID])
+                Usans = cur.fetchall()
+                print(Usans)
         except:
                 print('there was an error', data)
                 conn.close()
         finally:
                 conn.close()
-                return str(data)
+                # return str(data)
+                return render_template('ViewPatient.html', data = data, Surv = Surv, Usans = Usans)
+
+# @app.route("/ViewPatient", methods=['GET', 'POST'])
+# def getinfo():
+#     if request.method== 'GET':
+#         return render_template('ViewPatient.html')
 
 @app.route("/FormProcessing", methods=['GET' ,'POST'])
 def Formprocesst():
