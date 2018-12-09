@@ -78,11 +78,11 @@ def Formprocesst():
     if request.method== 'GET':
         Email = request.form.get('Email', default="Error")
         Password = request.form.get('Password', default="Error")
-        print("uhguycgv")
+        print("Processing")
 
         return render_template('registration.html')
     if request.method== 'POST':
-        Email = request.form.get('email', default="Error")
+        Email = request.form.get('Email', default="Error")
         Password = request.form.get('psw', default="Error")
         print(Email, Password)
 
