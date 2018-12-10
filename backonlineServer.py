@@ -133,31 +133,53 @@ def getWelcome():
 def getThankYou():
     return render_template('ThankYoupage.html')
 
-@app.route("/Survey/<NumT>")
+@app.route("/Survey/<NumT>", methods=['GET'])
 def getSurvey(NumT):
-    #try:
-        QuestGroup = int(NumT)
-        QuestGroup +=1
-        conn = sqlite3.connect(DATABASE)
-        cur = conn.cursor()
-        cur.execute(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
-        questionData = cur.fetchall()
-        conn.close()
+    if request.method== 'GET':
+        try:
+            QuestGroup = int(NumT)
+            QuestGroup +=1
 
-        conn = sqlite3.connect(DATABASE)
-        cur = conn.cursor()
-        cur.execute("SELECT * FROM Answer;")
-        answerData = cur.fetchall()
-        conn.close()
+            conn = sqlite3.connect(DATABASE)
+            cur = conn.cursor()
+            cur.execute(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
+            questionData = cur.fetchall()
+            conn.close()
 
-        if(QuestGroup<15):
-            return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+            conn = sqlite3.connect(DATABASE)
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM Answer;")
+            answerData = cur.fetchall()
+            conn.close()
 
-        else:
-            return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+            print("---------------------------------------------------------------")
+            try:
+                for i in range(1,39):
+                    try:
+                        data = request.args.get(str(i))
+                        if (data != None):
+                            tempAnswerData = answerData
+                            for elementArray in tempAnswerData:
+                                if (elementArray[0] == int(data)):
+                                    print (elementArray[int(data)])
+                                    print("hello")
 
-    #except:
-        #return 'there was an error'
+
+                            #print (tempAnswerData)
+                    except:
+                        pass
+            except:
+                pass
+            print("---------------------------------------------------------------")
+
+            if(QuestGroup<15):
+                return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+
+            else:
+                return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+
+        except:
+            return 'there was an error'
 
 @app.route("/SurveyB/<NumT>")
 def getSurveyB(NumT):
