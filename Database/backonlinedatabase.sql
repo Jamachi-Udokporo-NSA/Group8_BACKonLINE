@@ -49,15 +49,6 @@ CREATE TABLE IF NOT EXISTS `Answer` (
 	`QuestionID`	INTEGER NOT NULL
 );
 
--- dummy data
-INSERT INTO UserAnswer ('UserAnswerID', 'AnswerID', 'AnswerScore', 'SurveyID', 'AnswerText', 'PatientID') VALUES (1,1,0,1,'Yes',1);
-INSERT INTO UserAnswer ('UserAnswerID', 'AnswerID', 'AnswerScore', 'SurveyID', 'AnswerText', 'PatientID') VALUES (2,4,1,1,'Car accident',1);
-INSERT INTO UserAnswer ('UserAnswerID', 'AnswerID', 'AnswerScore', 'SurveyID', 'AnswerText', 'PatientID') VALUES (3,13,0,1,'Yes, I was satisfied with the treatment',1);
-INSERT INTO Survey ('SurveyID','Date', 'TotalScore', 'PatientID') VALUES (1,2010-10-03,0,1);
-INSERT INTO Survey ('SurveyID','Date', 'TotalScore', 'PatientID') VALUES (2,2012-03-23,1,1);
-INSERT INTO Survey ('SurveyID','Date', 'TotalScore', 'PatientID') VALUES (3,2015-04-05,0,1);
--- dummy data
-
 INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin');
 
 INSERT INTO Question ('QuestionID','QuestionText','QuestionType','QuestionGroup') VALUES (1,'Do you know what caused your current back pain?','Single',1);
