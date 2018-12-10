@@ -1,0 +1,74 @@
+{%extends 'Template.html'%}
+
+{%block mainBlock%}
+<h2> Patient Details </h2>
+
+    <!-- This table is for the patients biometric -->
+<table border - 1 class="a">
+    <tr>
+        <th> PatientID </th>
+        <th> FirstName </th>
+        <th> Surename </th>
+        <th> Email </th>
+        <th> Age </th>
+        <th> Gender </th>
+    </tr>
+
+    {% for row in data %}
+
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[5]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+    <!-- this table is for the survey of the patient -->
+<table border - 1 class="a">
+    <tr>
+        <th> SurveyID </th>
+        <th> Date </th>
+        <th> Total Score </th>
+        <th> PatientID </th>
+    </tr>
+
+    {% for row in Surv %}
+
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>        
+    </tr>
+    {% endfor %}
+
+    <!-- this table is for the patinet's answers -->
+<table border - 1 class="a">
+    <thead>
+        <th> User Answer ID </th>
+        <th> Answer ID </th>
+        <th> Answer Score </th>
+        <th> Survey ID </th>
+        <th> Answer Text </th>
+        <th> PatientID </th>
+    </thead>
+
+    {% for row in Usans %}
+
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[5]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</table>
+{%endblock%}

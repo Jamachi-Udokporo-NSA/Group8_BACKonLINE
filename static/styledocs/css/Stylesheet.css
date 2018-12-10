@@ -131,3 +131,12 @@ a.button {
   width: 100%;
   margin-bottom:10px;
   }
+
+  table.a{
+    table-layout: auto;
+    width: 100%;
+  }
+
+thead,td {
+    border: 1px solid black;
+}
