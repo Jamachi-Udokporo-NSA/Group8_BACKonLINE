@@ -42,11 +42,11 @@ def AllAdmin():
         Login_admin= cur.fetchall()
         conn.close()
         print(Login_admin)
-        
+
         if Login_admin != []:
             if Email == Login_admin[0][0] and Password == Login_admin[0][1]:
                 return render_template('Select_patient_answer.html', dispat= dispat)
-        return render_template('Admin.html')        
+        return render_template('Admin.html')
 
 @app.route("/Select", methods=['GET', 'POST'])
 def getSelect():
@@ -142,7 +142,7 @@ def getWelcome():
 @app.route("/Thankyou")
 def getThankYou():
     answerData = getDBData("SELECT * FROM Answer;")
-    UanswerData = getDBData("SELECT AnswerScore FROM UserAnswer;")
+    UanswerData = getDBData("SELECT AnswerScore, SurveyID FROM UserAnswer;")
     UanswerDataArray = []
 
     for elementArray in UanswerData:
