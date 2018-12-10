@@ -1,0 +1,35 @@
+{% extends 'Template.html' %}
+{%block mainBlock%}
+<!-- <form allign="center" action="/Select" class="form-container" method="POST">
+  <h1>Patient Record</h1>
+
+  <label for="email"><b>Patient ID</b></label>
+  <input type="text" placeholder="Enter a Patient's ID" name="PatientID">
+
+  <button type="submit" class="btn">View Patient</button>
+</form> -->
+<centre> <h1>Click on the PatientID of a patient to view their information</h1> </centre>
+
+<table border - 1 class="a">
+  <tr>
+      <th> PatientID </th>
+      <th> FirstName </th>
+      <th> Surename </th>
+      <th> Email </th>
+      <th> Age </th>
+      <th> Gender </th>
+  </tr>
+
+  {% for row in dispat %}
+
+  <tr>
+      <td><a href="/Select/{{row[0]}}">{{row[0]}}</a></td>
+      <td>{{row[1]}}</td>
+      <td>{{row[2]}}</td>
+      <td>{{row[3]}}</td>
+      <td>{{row[4]}}</td>
+      <td>{{row[5]}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{%endblock%}
