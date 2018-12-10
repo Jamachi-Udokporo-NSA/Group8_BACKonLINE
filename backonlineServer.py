@@ -8,7 +8,7 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 QuestGroup = 0
 
 
-@app.route("/First", methods=['GET'])
+@app.route("/", methods=['GET'])
 def getFirst():
     if request.method== 'GET':
         return render_template('First.html')
@@ -93,13 +93,19 @@ def Formprocesst():
 
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
-        cur.execute("SELECT Email, Password FROM Patient WHERE Email=? AND Password=?",[Email,Password])
+        cur.execute("SELECT Email, Password, PatientID  FROM Patient WHERE Email=? AND Password=?",[Email,Password])
         Patient_data= cur.fetchall()
         conn.close()
         print(Patient_data)
+        print(Patient_data[0][2])
+
+
         if Patient_data != []:
             if Email == Patient_data[0][0] and Password == Patient_data[0][1]:
-                return render_template('WelcomePage.html')
+                resp = make_response(render_template('WelcomePage.html'))
+                resp.set_cookie('PatientID', str(Patient_data[0][2]))
+                return resp
+
         return render_template('registration.html')
 
 
@@ -138,31 +144,27 @@ def getWelcome():
 def getThankYou():
     return render_template('ThankYoupage.html')
 
-@app.route("/Survey/<NumT>")
+@app.route("/Survey/<NumT>", methods=['GET'])
 def getSurvey(NumT):
-    #try:
-        QuestGroup = int(NumT)
-        QuestGroup +=1
-        conn = sqlite3.connect(DATABASE)
-        cur = conn.cursor()
-        cur.execute(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
-        questionData = cur.fetchall()
-        conn.close()
+    if request.method== 'GET':
+        try:
+            QuestGroup = int(NumT)
+            QuestGroup +=1
 
-        conn = sqlite3.connect(DATABASE)
-        cur = conn.cursor()
-        cur.execute("SELECT * FROM Answer;")
-        answerData = cur.fetchall()
-        conn.close()
+            questionData = getDBData(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
+            answerData = getDBData("SELECT * FROM Answer;")
 
-        if(QuestGroup<15):
-            return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+            serveySave(answerData)
 
-        else:
-            return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+            if(QuestGroup<15):
+                return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
-    #except:
-        #return 'there was an error'
+            else:
+                return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+
+        except:
+            return 'there was an error'
+
 
 @app.route("/SurveyB/<NumT>")
 def getSurveyB(NumT):
@@ -170,17 +172,9 @@ def getSurveyB(NumT):
         QuestGroup = int(NumT)
         QuestGroup -=1
 
-        conn = sqlite3.connect(DATABASE)
-        cur = conn.cursor()
-        cur.execute(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
-        questionData = cur.fetchall()
-        conn.close()
-
-        conn = sqlite3.connect(DATABASE)
-        cur = conn.cursor()
-        cur.execute("SELECT * FROM Answer;")
-        answerData = cur.fetchall()
-        conn.close()
+        questionData = getDBData(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
+        answerData = getDBData("SELECT * FROM Answer;")
+        serveySave(answerData)
 
         if(QuestGroup<16):
             return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
@@ -190,6 +184,35 @@ def getSurveyB(NumT):
 
     except:
         return 'there was an error'
+
+def getDBData(iString):
+    conn = sqlite3.connect(DATABASE)
+    cur = conn.cursor()
+    cur.execute(iString)
+    Data = cur.fetchall()
+    conn.close()
+    return Data
+
+def serveySave(answerData):
+    try:
+        data = request.args.to_dict()
+        tempAnswerData = answerData
+
+        for key, value in data.items():
+            if (data != None):
+                for elementArray in tempAnswerData:
+                    if (str(elementArray[0]) == value):
+                        print(elementArray[0],elementArray[2],5,elementArray[1], request.cookies.get('PatientID'))
+                        conn = sqlite3.connect(DATABASE)
+                        cur = conn.cursor()
+                        cur.execute("INSERT INTO UserAnswer ('AnswerID','AnswerScore','SurveyID','AnswerText','PatientID')\
+                                    VALUES (?,?,?,?,?)",(elementArray[0],elementArray[2],5,elementArray[1],int(request.cookies.get('PatientID'))))
+                        conn.commit()
+                        conn.close()
+
+    except:
+        conn.rollback()
+        conn.close()
 
 
 if __name__ == "__main__":
