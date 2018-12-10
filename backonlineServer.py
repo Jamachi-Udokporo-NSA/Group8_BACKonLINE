@@ -133,31 +133,76 @@ def getWelcome():
 def getThankYou():
     return render_template('ThankYoupage.html')
 
-@app.route("/Survey/<NumT>")
+@app.route("/Survey/<NumT>", methods=['GET'])
 def getSurvey(NumT):
-    #try:
-        QuestGroup = int(NumT)
-        QuestGroup +=1
-        conn = sqlite3.connect(DATABASE)
-        cur = conn.cursor()
-        cur.execute(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
-        questionData = cur.fetchall()
-        conn.close()
+    if request.method== 'GET':
+        try:
+            QuestGroup = int(NumT)
+            QuestGroup +=1
 
-        conn = sqlite3.connect(DATABASE)
-        cur = conn.cursor()
-        cur.execute("SELECT * FROM Answer;")
-        answerData = cur.fetchall()
-        conn.close()
+            conn = sqlite3.connect(DATABASE)
+            cur = conn.cursor()
+            cur.execute(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
+            questionData = cur.fetchall()
+            conn.close()
 
-        if(QuestGroup<15):
-            return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+            conn = sqlite3.connect(DATABASE)
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM Answer;")
+            answerData = cur.fetchall()
+            conn.close()
 
-        else:
-            return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+            print("---------------------------------------------------------------")
+            try:
+                data = request.args.to_dict()
+                tempAnswerData = answerData
 
-    #except:
-        #return 'there was an error'
+                for key, value in data.items():
+                    try:
+                        if (data != None):
+
+                            try:
+                                print(key, value)
+
+                                for elementArray in tempAnswerData:
+                                    if (str(elementArray[0]) == value):
+                                        print(elementArray)
+
+                                        try:
+                                            conn = sqlite3.connect(DATABASE)
+                                            cur = conn.cursor()
+                                            cur.execute("INSERT INTO UserAnswer ('AnswerID','AnswerScore','SurveyID','AnswerText','PatientID')\
+                                                        VALUES (?,?,?,?,?)",(elementArray[0],elementArray[2],5,elementArray[1],5))
+                                            conn.commit()
+                                            msg = "Record successfully added"
+                                        except:
+                                            conn.rollback()
+                                            msg = "error in insert operation"
+                                        finally:
+                                            conn.close()
+
+                            except Exception as e:
+                                print("First", e)
+
+                                pass # code for text entry
+
+                    except:
+
+                        print("Second")
+                        pass
+            except:
+                print("Third")
+                pass
+            print("---------------------------------------------------------------")
+
+            if(QuestGroup<15):
+                return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+
+            else:
+                return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+
+        except:
+            return 'there was an error'
 
 @app.route("/SurveyB/<NumT>")
 def getSurveyB(NumT):
