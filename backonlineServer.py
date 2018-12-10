@@ -45,13 +45,13 @@ def AllAdmin():
 
         if Login_admin != []:
             if Email == Login_admin[0][0] and Password == Login_admin[0][1]:
-                return render_template('Select_patient_answer.html', dispat= dispat)
+                return render_template('Select_patient.html', dispat= dispat)
         return render_template('Admin.html')
 
 @app.route("/Select/<patient_id>", methods=['GET', 'POST'])
 def getSelect(patient_id):
     # if request.method== 'GET':
-    #     return render_template('Select_patient_answer.html')
+    #     return render_template('Select_patient.html')
     # if request.method =='POST':
     try:
         # PatientID = request.form.get('PatientID', default="Error") #rem: args for get form for post
