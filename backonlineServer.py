@@ -8,7 +8,7 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 QuestGroup = 0
 
 
-@app.route("/First", methods=['GET'])
+@app.route("/", methods=['GET'])
 def getFirst():
     if request.method== 'GET':
         return render_template('First.html')
