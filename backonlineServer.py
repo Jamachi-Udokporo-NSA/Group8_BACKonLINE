@@ -34,14 +34,19 @@ def AllAdmin():
 
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
+        cur.execute("SELECT PatientID, FirstName, SurName, Email, Age, Gender FROM Patient;")
+        dispat = cur.fetchall()
+        print(dispat)
+
         cur.execute("SELECT Email, Password FROM Staff WHERE Email=? AND Password=?",[Email,Password])
         Login_admin= cur.fetchall()
         conn.close()
         print(Login_admin)
+        
         if Login_admin != []:
             if Email == Login_admin[0][0] and Password == Login_admin[0][1]:
-                return render_template('Select_patient_answer.html')
-        return render_template('Admin.html')
+                return render_template('Select_patient_answer.html', dispat= dispat)
+        return render_template('Admin.html')        
 
 @app.route("/Select", methods=['GET', 'POST'])
 def getSelect():
