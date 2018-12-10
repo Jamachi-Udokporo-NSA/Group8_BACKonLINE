@@ -38,7 +38,7 @@
           <div style = "color:blue">
           {% for Answer in answerData %}
             {% if Answer[3] == Question[0] %}
-              <input type="checkbox" name={{Question[0]}} value={{Answer[0]}}> {{Answer[1]}}<br>
+              <input type="checkbox" name={{Question[0]}}_{{Answer[0]}} value={{Answer[0]}}> {{Answer[1]}}<br>
             {% endif %}
           {% endfor %}
         {% endif %}

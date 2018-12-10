@@ -154,21 +154,44 @@ def getSurvey(NumT):
 
             print("---------------------------------------------------------------")
             try:
-                for i in range(1,39):
+                data = request.args.to_dict()
+                tempAnswerData = answerData
+
+                for key, value in data.items():
                     try:
-                        data = request.args.get(str(i))
                         if (data != None):
-                            tempAnswerData = answerData
-                            for elementArray in tempAnswerData:
-                                if (elementArray[0] == int(data)):
-                                    print (elementArray[int(data)])
-                                    print("hello")
 
+                            try:
+                                print(key, value)
 
-                            #print (tempAnswerData)
+                                for elementArray in tempAnswerData:
+                                    if (str(elementArray[0]) == value):
+                                        print(elementArray)
+
+                                        try:
+                                            conn = sqlite3.connect(DATABASE)
+                                            cur = conn.cursor()
+                                            cur.execute("INSERT INTO UserAnswer ('AnswerID','AnswerScore','SurveyID','AnswerText','PatientID')\
+                                                        VALUES (?,?,?,?,?)",(elementArray[0],elementArray[2],5,elementArray[1],5))
+                                            conn.commit()
+                                            msg = "Record successfully added"
+                                        except:
+                                            conn.rollback()
+                                            msg = "error in insert operation"
+                                        finally:
+                                            conn.close()
+
+                            except Exception as e:
+                                print("First", e)
+
+                                pass # code for text entry
+
                     except:
+
+                        print("Second")
                         pass
             except:
+                print("Third")
                 pass
             print("---------------------------------------------------------------")
 
