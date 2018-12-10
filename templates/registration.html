@@ -3,10 +3,10 @@
 <!-- this is for login-->
 <form allign="center" action="/FormProcessing" class="form-container" method = 'POST'>
   <h1>Login, If you have an account</h1>
-
+<!-- start refernce of email pattern:https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute-->
   <label for="email"><b>Email</b></label>
   <input type="text" name="Email" placeholder="Enter Email"  pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required/>
-
+<!-- end refernce-->
   <label for="psw"><b>Password</b></label>
   <input type="password" placeholder="Enter Password" name="psw" required/>
 
@@ -23,8 +23,10 @@
   <br><label for="SurName"><b>Surname</b></label>
   <input type="text" placeholder="Enter your Last Name" name="SurName" required/>
 
+  <!-- //start refernce for email pattern:https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute-->
   <br><label for="Email"><b>Email</b></label>
   <input type="text" name="Email" placeholder="Enter Email"  pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required/>
+  <!--End refernce-->
 
   <br><label for="Password"><b>Password</b></label>
   <input type="Password" placeholder="Create a Password" name="Password" required/>
