@@ -32,6 +32,11 @@
             {% endif %}
           {% endfor %}
 
+        {% elif Question[2] == "Slider" %}
+          <div class="slidecontainer">
+            0<input type="range" min="0" max="8" class="slider" id="myRange">8+
+            <p>Hours:  <span id="demo"></span></p>
+          </div>
 
         {% else %}
           <p>Please tick <b>all</b> options that apply</p>
@@ -54,6 +59,13 @@
   </form>
 
   <script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
   //$('input[type="checkbox"]').on('change', function() {
   //  $('input[name="' + this.name + '"]').not(this).prop('checked', false);
   //});

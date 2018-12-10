@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `UserAnswer` (
 	`AnswerID`	INTEGER NOT NULL,
 	`AnswerScore`	INTEGER NOT NULL,
 	`SurveyID`	INTEGER NOT NULL,
-	`AnswerText`	TEXT NOT NULL
+	`AnswerText`	TEXT NOT NULL,
 	'PatientID'	INTEGER NOT NULL
 );
 CREATE TABLE IF NOT EXISTS `Survey` (
@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `Patient` (
 	`Age`	NUMERIC NOT NULL,
 	`Gender`	TEXT NOT NULL
 );
+
 CREATE TABLE IF NOT EXISTS `Answer` (
 	`AnswerID`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`AnswerText`	TEXT NOT NULL,
@@ -285,5 +286,3 @@ INSERT INTO Answer('AnswerID','AnswerText', 'Score', 'QuestionID' ) VALUES (183,
 INSERT INTO Answer('AnswerID','AnswerText', 'Score', 'QuestionID' ) VALUES (184,'agree',2,39);
 INSERT INTO Answer('AnswerID','AnswerText', 'Score', 'QuestionID' ) VALUES (185,'neither agree nor disagree',1,39);
 INSERT INTO Answer('AnswerID','AnswerText', 'Score', 'QuestionID' ) VALUES (186,'disagree',0,39);
-
-

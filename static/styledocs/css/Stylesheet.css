@@ -47,13 +47,9 @@ a.button {
     color: initial;
 }
 
-.slidecontainer {
-    width: 100%;
-}
-
 .slider {
     -webkit-appearance: none;
-    width: 100%;
+    width: 200px;
     height: 15px;
     border-radius: 5px;
     background: #d3d3d3;
@@ -63,17 +59,13 @@ a.button {
     transition: opacity .2s;
 }
 
-.slider:hover {
-    opacity: 1;
-}
-
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: blue;
     cursor: pointer;
 }
 
