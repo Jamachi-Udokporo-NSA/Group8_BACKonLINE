@@ -1,6 +1,7 @@
 import os
 from flask import Flask, redirect, request, render_template, make_response, escape, session, jsonify
 import sqlite3
+import datetime
 
 app = Flask(__name__)
 DATABASE = 'Database/backonlinedatabase.db'
@@ -41,11 +42,11 @@ def AllAdmin():
         Login_admin= cur.fetchall()
         conn.close()
         print(Login_admin)
-        
+
         if Login_admin != []:
             if Email == Login_admin[0][0] and Password == Login_admin[0][1]:
                 return render_template('Select_patient_answer.html', dispat= dispat)
-        return render_template('Admin.html')        
+        return render_template('Admin.html')
 
 @app.route("/Select/<patient_id>", methods=['GET', 'POST'])
 def getSelect(patient_id):
@@ -84,6 +85,7 @@ def Formprocesst():
         print("Processing")
 
         return render_template('registration.html')
+
     if request.method== 'POST':
         Email = request.form.get('Email', default="Error")
         Password = request.form.get('psw', default="Error")
@@ -94,9 +96,6 @@ def Formprocesst():
         cur.execute("SELECT Email, Password, PatientID  FROM Patient WHERE Email=? AND Password=?",[Email,Password])
         Patient_data= cur.fetchall()
         conn.close()
-        print(Patient_data)
-        print(Patient_data[0][2])
-
 
         if Patient_data != []:
             if Email == Patient_data[0][0] and Password == Patient_data[0][1]:
@@ -140,6 +139,25 @@ def getWelcome():
 
 @app.route("/Thankyou")
 def getThankYou():
+    answerData = getDBData("SELECT * FROM Answer;")
+    UanswerData = getDBData("SELECT AnswerScore, SurveyID FROM UserAnswer;")
+    UanswerDataArray = []
+
+    for elementArray in UanswerData:
+        UanswerDataArray.append(int(elementArray[0]))
+
+    Score = sum(UanswerDataArray)
+
+    serveySave(answerData)
+
+    date = str(datetime.datetime.now())
+    conn = sqlite3.connect(DATABASE)
+    cur = conn.cursor()
+    cur.execute("INSERT INTO Survey ('Date','TotalScore','PatientID')\
+                VALUES (?,?,?)",(date,Score,int(request.cookies.get('PatientID'))))
+    conn.commit()
+    conn.close()
+
     return render_template('ThankYoupage.html')
 
 @app.route("/Survey/<NumT>", methods=['GET'])
@@ -154,7 +172,23 @@ def getSurvey(NumT):
 
             serveySave(answerData)
 
-            if(QuestGroup<15):
+            if(QuestGroup == 1):
+                conn = sqlite3.connect(DATABASE)
+                cur = conn.cursor()
+                cur.execute("SELECT SurveyID FROM Survey;")
+                Data = cur.fetchall()
+                conn.close()
+
+                DataArray = []
+                for elementArray in Data:
+                    DataArray.append(elementArray[0])
+                SurveyId = (int(DataArray[-1])+1)
+
+                resp = make_response(render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup))
+                resp.set_cookie('SurveyID', str(SurveyId))
+                return resp
+
+            elif(QuestGroup<15):
                 return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
             else:
@@ -173,12 +207,7 @@ def getSurveyB(NumT):
         questionData = getDBData(f"SELECT * FROM Question WHERE QuestionGroup == {QuestGroup};")
         answerData = getDBData("SELECT * FROM Answer;")
         serveySave(answerData)
-
-        if(QuestGroup<16):
-            return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
-
-        else:
-            return render_template('SurveyEnd.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
+        return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
     except:
         return 'there was an error'
@@ -204,7 +233,7 @@ def serveySave(answerData):
                         conn = sqlite3.connect(DATABASE)
                         cur = conn.cursor()
                         cur.execute("INSERT INTO UserAnswer ('AnswerID','AnswerScore','SurveyID','AnswerText','PatientID')\
-                                    VALUES (?,?,?,?,?)",(elementArray[0],elementArray[2],5,elementArray[1],int(request.cookies.get('PatientID'))))
+                                    VALUES (?,?,?,?,?)",(elementArray[0],elementArray[2],int(request.cookies.get('SurveyID')),elementArray[1],int(request.cookies.get('PatientID'))))
                         conn.commit()
                         conn.close()
 

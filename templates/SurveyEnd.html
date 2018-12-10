@@ -20,12 +20,12 @@
 
       <h3> {{ Question[0]}})  {{ Question[1]}} </h3>
 
-        <div style = "color:blue">
-        {% for Answer in answerData %}
-          {% if Answer[3] == Question[0] %}
-            <input type="checkbox" name={{Question[0]}} value={{Answer[1]}}> {{Answer[1]}}<br>
-          {% endif %}
-        {% endfor %}
+      <div style = "color:blue">
+      {% for Answer in answerData %}
+        {% if Answer[3] == Question[0] %}
+          <input type="radio" name={{Question[0]}} value="{{Answer[0]}}"> {{Answer[1]}}<br>
+        {% endif %}
+      {% endfor %}
 
         </div>
 
@@ -35,9 +35,9 @@
   </form>
 
   <script>
-  $('input[type="checkbox"]').on('change', function() {
-    $('input[name="' + this.name + '"]').not(this).prop('checked', false);
-  });
+  // $('input[type="checkbox"]').on('change', function() {
+  //   $('input[name="' + this.name + '"]').not(this).prop('checked', false);
+  // });
   </script>
 
 {%endblock%}
