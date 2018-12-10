@@ -124,7 +124,7 @@ def getpatient():
             cur.execute("INSERT INTO Patient ('FirstName','SurName','Email','Password','Age','Gender')\
                         VALUES (?,?,?,?,?,?)",(FirstName,SurName,Email,Password,Age,Gender))
             conn.commit()
-            msg = "Record successfully added"
+            msg = "Record successfully added, Please login"
         except:
             conn.rollback()
             msg = "error in insert operation"
