@@ -1,24 +1,36 @@
+################################################################################
+# Server file for servey
+# Created 14/10/2018; Last modified 11/12/2018
+
+################################################################################
+#Imports
 import os
 from flask import Flask, redirect, request, render_template, make_response, escape, session, jsonify
 import sqlite3
 import datetime
 
+################################################################################
+# Initialise flask and get database name
 app = Flask(__name__)
 DATABASE = 'Database/backonlinedatabase.db'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-QuestGroup = 0
 
-
+################################################################################
+# Goes to initial select login option page
 @app.route("/", methods=['GET'])
 def getFirst():
     if request.method== 'GET':
         return render_template('First.html')
 
+################################################################################
+# Render admin login page
 @app.route("/Admin", methods=['GET'])
 def getAdmin():
     if request.method== 'GET':
         return render_template('Admin.html')
 
+################################################################################
+# Process admin login attempt
 @app.route("/Process", methods=['GET', 'POST'])
 def AllAdmin():
     if request.method== 'GET':
@@ -48,13 +60,12 @@ def AllAdmin():
                 return render_template('Select_patient.html', dispat= dispat)
         return render_template('Admin.html')
 
+################################################################################
+# Retrives the patient data from db for displaing on the page
 @app.route("/Select/<patient_id>", methods=['GET', 'POST'])
 def getSelect(patient_id):
-    # if request.method== 'GET':
-    #     return render_template('Select_patient.html')
-    # if request.method =='POST':
+
     try:
-        # PatientID = request.form.get('PatientID', default="Error") #rem: args for get form for post
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
         cur.execute("SELECT PatientID, FirstName, SurName, Email, Age, Gender FROM Patient WHERE PatientID=? ;", [patient_id])
@@ -72,11 +83,8 @@ def getSelect(patient_id):
         conn.close()
         return render_template('ViewPatient.html', data = data, Surv = Surv, Usans = Usans)
 
-# @app.route("/ViewPatient", methods=['GET', 'POST'])
-# def getinfo():
-#     if request.method== 'GET':
-#         return render_template('ViewPatient.html')
-
+################################################################################
+# Process pateient login
 @app.route("/FormProcessing", methods=['GET' ,'POST'])
 def Formprocesst():
     if request.method== 'GET':
@@ -105,7 +113,8 @@ def Formprocesst():
 
         return render_template('registration.html')
 
-
+################################################################################
+# Process the client registration
 @app.route("/Form", methods=['GET', 'POST'])
 def getpatient():
     if request.method == 'GET':
@@ -132,11 +141,15 @@ def getpatient():
             conn.close()
             return msg
 
+################################################################################
+# Resnder the welcome page
 @app.route("/Welcome", methods=['GET'])
 def getWelcome():
     if request.method== 'GET':
         return render_template('WelcomePage.html')
 
+################################################################################
+# Save last page of survey answers and creates a survey db entry with data
 @app.route("/Thankyou")
 def getThankYou():
     answerData = getDBData("SELECT * FROM Answer;")
@@ -160,6 +173,8 @@ def getThankYou():
 
     return render_template('ThankYoupage.html')
 
+################################################################################
+# Saves last page of answers, retrives the next questions and answers for survey
 @app.route("/Survey/<NumT>", methods=['GET'])
 def getSurvey(NumT):
     if request.method== 'GET':
@@ -197,7 +212,8 @@ def getSurvey(NumT):
         except:
             return 'there was an error'
 
-
+################################################################################
+# Retrives last page of questions and answers
 @app.route("/SurveyB/<NumT>")
 def getSurveyB(NumT):
     try:
@@ -212,6 +228,8 @@ def getSurveyB(NumT):
     except:
         return 'there was an error'
 
+################################################################################
+# Gets data from the database
 def getDBData(iString):
     conn = sqlite3.connect(DATABASE)
     cur = conn.cursor()
@@ -220,6 +238,8 @@ def getDBData(iString):
     conn.close()
     return Data
 
+################################################################################
+# Saves the UserAnswers to the database
 def serveySave(answerData):
     try:
         data = request.args.to_dict()
@@ -241,6 +261,7 @@ def serveySave(answerData):
         conn.rollback()
         conn.close()
 
-
+################################################################################
+# Runs flask server
 if __name__ == "__main__":
     app.run(debug=True)
