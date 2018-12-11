@@ -174,23 +174,23 @@ def getSurvey(NumT):
 
             serveySave(answerData)
 
-            if(QuestGroup == 1):
-                conn = sqlite3.connect(DATABASE)
-                cur = conn.cursor()
-                cur.execute("SELECT SurveyID FROM Survey;")
-                Data = cur.fetchall()
-                conn.close()
+            # if(QuestGroup == 1):
+            #     conn = sqlite3.connect(DATABASE)
+            #     cur = conn.cursor()
+            #     cur.execute("SELECT SurveyID FROM Survey;")
+            #     Data = cur.fetchall()
+            #     conn.close()
+            #
+            #     DataArray = []
+            #     for elementArray in Data:
+            #         DataArray.append(elementArray[0])
+            #     SurveyId = (int(DataArray[-1])+1)
+            #
+            #     resp = make_response(render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup))
+            #     resp.set_cookie('SurveyID', str(SurveyId))
+            #     return resp
 
-                DataArray = []
-                for elementArray in Data:
-                    DataArray.append(elementArray[0])
-                SurveyId = (int(DataArray[-1])+1)
-
-                resp = make_response(render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup))
-                resp.set_cookie('SurveyID', str(SurveyId))
-                return resp
-
-            elif(QuestGroup<15):
+            if(QuestGroup<15):
                 return render_template('Survey.html',questionData = questionData, answerData= answerData, questionNumber = QuestGroup)
 
             else:
@@ -235,7 +235,7 @@ def serveySave(answerData):
                         conn = sqlite3.connect(DATABASE)
                         cur = conn.cursor()
                         cur.execute("INSERT INTO UserAnswer ('AnswerID','AnswerScore','SurveyID','AnswerText','PatientID')\
-                                    VALUES (?,?,?,?,?)",(elementArray[0],elementArray[2],int(request.cookies.get('SurveyID')),elementArray[1],int(request.cookies.get('PatientID'))))
+                                    VALUES (?,?,?,?,?)",(elementArray[0],elementArray[2],1,elementArray[1],int(request.cookies.get('PatientID'))))
                         conn.commit()
                         conn.close()
 
