@@ -1,15 +1,10 @@
+<!--  this is extending the template.html , which contains the nav bar and css to view on this page -->
 {% extends 'Template.html' %}
 {%block mainBlock%}
-<!-- <form allign="center" action="/Select" class="form-container" method="POST">
-  <h1>Patient Record</h1>
-
-  <label for="email"><b>Patient ID</b></label>
-  <input type="text" placeholder="Enter a Patient's ID" name="PatientID">
-
-  <button type="submit" class="btn">View Patient</button>
-</form> -->
+<!--- Thre is a title that instructs Clients to click on patient id to view thier information containing survey and Client details--->
 <centre> <h1>Click on the PatientID of a patient to view their information</h1> </centre>
 
+<!-- Give headings to the data shown below-->
 <table border - 1 class="a">
   <tr>
       <th> PatientID </th>
@@ -22,7 +17,7 @@
 
   {% for row in dispat %}
 
-  <tr>
+<!-- here is displaying data from the databse to database-->  <tr>
       <td><a href="/Select/{{row[0]}}">{{row[0]}}</a></td>
       <td>{{row[1]}}</td>
       <td>{{row[2]}}</td>

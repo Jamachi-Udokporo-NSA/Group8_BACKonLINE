@@ -1,19 +1,24 @@
+<!--  this is extending the template.html , which contains the nav bar and css to view on this page -->
 {%extends 'Template.html'%}
 {%block mainBlock%}
-<!-- this is for login-->
+
+<!-- this is  login form that has Email and password fields for Client to login to start survey-->
 <form allign="center" action="/FormProcessing" class="form-container" method = 'POST'>
   <h1>Login, If you have an account</h1>
+
 <!-- start refernce of email pattern:https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute-->
   <label for="email"><b>Email</b></label>
   <input type="text" name="Email" placeholder="Enter Email"  pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required/>
 <!-- end refernce-->
+
   <label for="psw"><b>Password</b></label>
   <input type="password" placeholder="Enter Password" name="psw" required/>
 
   <button type="submit" class="btn">Login</button>
   <!-- <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
 </form>
-<!-- this is for registration--->
+
+<!-- this is the  registration form that creates fields and gives placeholder and name to each fields, for readabilty--->
 <form method='post' name="myForm"  id='reg' onsubmit="return subreg()" class="form-container">
   <br>
   <h1>Register, to create an account</h1>
@@ -30,10 +35,13 @@
 
   <br><label for="Password"><b>Password</b></label>
   <input type="Password" placeholder="Create a Password" name="Password" required/>
+
 <!--- start reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number --->
   <br><label for="age"><b>Age</b></label>
   <input type="number" placeholder="Write your age in here" min="0" max="120" name="Age"  required/>
 <!-- end refernce--->
+
+<!--- FOr gendder field gives drop down options that Client can choose from--->
   <br><label for="Gender"><b>Please select your gender, by clicking on down arrow:</b></label>
   <select  name="Gender">
     <option value="Male">Male</option>
@@ -46,7 +54,7 @@
 </form>
 <span id='txt'> </span>
 <script>
-
+// This is ajax code that gets the feilds
   function subreg() {
     var FirstName = document.forms["reg"]["FirstName"].value;
     var SurName = document.forms["reg"]["SurName"].value;
@@ -55,11 +63,13 @@
     var Age = document.forms["reg"]["Age"].value;
     var Gender = document.forms["reg"]["Gender"].value;
 
+//Add the fields to the browser
     params = 'FirstName=' + FirstName + '&SurName=' + SurName  + '&Email=' + Email+ '&Password=' + Password + '&Age=' + Age + '&Gender=' + Gender;
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", '/Form', true); // true is asynchronous
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.onload = function() {
+      //Gets the form present in ready and working Status , if not return as error of htttp
       if (xhttp.readyState === 4 && xhttp.status === 200) {
         console.log(xhttp.responseText);
         document.getElementById("txt").innerHTML = xhttp.responseText;
