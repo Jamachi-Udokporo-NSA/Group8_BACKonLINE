@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `Answer` (
 );
 
 INSERT INTO staff ('StaffID','Email','Password') VALUES (1,'Admin','Admin');
+INSERT INTO Survey ('Date','TotalScore','PatientID') VALUES (2018,0000,'0');
 
 INSERT INTO Question ('QuestionID','QuestionText','QuestionType','QuestionGroup') VALUES (1,'Do you know what caused your current back pain?','Single',1);
 INSERT INTO Question ('QuestionID','QuestionText','QuestionType','QuestionGroup') VALUES (2,'If yes, choose an option from the list below:','Single',1);
