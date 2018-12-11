@@ -30,23 +30,22 @@
 
   <br><label for="Password"><b>Password</b></label>
   <input type="Password" placeholder="Create a Password" name="Password" required/>
-
+<!--- start reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number --->
   <br><label for="age"><b>Age</b></label>
-  <input type="number" placeholder="Type age" min="0" max="100" name="Age"  required/>
-
-  <br><label for="Gender"><b>Please select your gender:</b></label>
-  <select class="style" name="Gender">
+  <input type="number" placeholder="Write your age in here" min="0" max="120" name="Age"  required/>
+<!-- end refernce--->
+  <br><label for="Gender"><b>Please select your gender, by clicking on down arrow:</b></label>
+  <select  name="Gender">
     <option value="Male">Male</option>
     <option value="Female">Female</option>
     <option value="Not mention">Not mention</option>
+    <option value= "Other">Other</option>
   </select>
   <br> <a href="/Welcome"> <button type="submit"  class="btn" >Submit</button> </a>
 
 </form>
 <span id='txt'> </span>
 <script>
-//reference adpated form: https://stackoverflow.com/questions/10713749/javascript-validation-numbers-only
-
 
   function subreg() {
     var FirstName = document.forms["reg"]["FirstName"].value;
