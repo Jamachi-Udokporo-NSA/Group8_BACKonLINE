@@ -10,10 +10,10 @@
 
 <!-- Side progress bar and directory ------------------------------------------>
 <ContentRight class="contentRight"><center>
-  <h2 style="color:black;">Survey progress</h2>
+  <h2 style="color:White;font-size:30px;">Survey progress</h2>
   <progress value="{{questionData[0][3]}}" max="15"></progress><br><br><br><Br>
-  <a href="/Survey/0" class="button"><b>Return to survey start</b></a><br><br>
-  <a href="/" class="button"><b>Log out</b></a><br>
+  <a href="/Survey/0" class="button">Return to survey start</a><br><br>
+  <a href="/" class="button">Log out</a><br>
 </center></ContentRight>
 
 <!-- Main content for the page ------------------------------------------------>
@@ -61,11 +61,11 @@
 
     <!-- Final page submit, get next set of questions ------------------------->
     {% endfor %}
-    <br><button>Continue</button>
+    <br><button class="nav">Continue</button>
 
   <!-- Add return to last page if not at survey start ------------------------->
   {% if questionNumber > 1 %}
-    <br><a href="/SurveyB/{{questionNumber}}" class="button">Back</a>
+    <br><a href="/SurveyB/{{questionNumber}}" class="nav">Back</a>
   {% endif %}
   </form>
 </article>

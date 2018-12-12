@@ -1,6 +1,6 @@
 /* --- set font for project ------------------------------------------------- */
 .body {
-  font-size:23px;
+  font-size:26px;
 }
 
 /* --- Set wrapper for logo bar  -------------------------------------------- */
@@ -37,11 +37,13 @@
   border-radius: 25px;
   margin: 20px;
   float: right;
-  width: 15%;
+  width: 25%;
   height: 325px;
   color: White;
   padding: 5px;
-  background-color: rgba(0,0,0,0.2);
+  background-color:#00008B;
+  border-style: solid;
+  border-width: 4px;
 }
 
 /* --- set location of page content ----------------------------------------- */
@@ -51,13 +53,20 @@
 
 /* --- set styling for navigatition buttons --------------------------------- */
 a.button {
-    -webkit-appearance: button;
+    /* -webkit-appearance: button;
     -moz-appearance: button;
-    appearance: button;
+    appearance: button; */
+    display:block;
+    background-color: #4CAF50;
     padding: 3px;
-    font-size:18px;
+    font-size:23px;
     text-decoration: none;
-    color: initial;
+    color: White;
+
+}
+
+a.nav {
+
 }
 
 /* --- set styling for slider wrapper  -------------------------------------- */
