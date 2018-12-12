@@ -1,5 +1,6 @@
 /* --- set font for project ------------------------------------------------- */
 .body {
+  font-family:serif;
   font-size:26px;
 }
 
@@ -65,8 +66,27 @@ a.button {
 
 }
 
-a.nav {
+a.navi {
+  display:block;
+  text-align:center;
+  background-color: #4CAF50;
+  padding: 3px;
+  font-size:26px;
+  font-family:serif;
+  text-decoration: none;
+  color: White;
+}
 
+.nav {
+  display:block;
+  text-align:center;
+  width:100%;
+  background-color: #4CAF50;
+  padding: 3px;
+  font-size:26px;
+  font-family:serif;
+  text-decoration: none;
+  color: White;
 }
 
 /* --- set styling for slider wrapper  -------------------------------------- */

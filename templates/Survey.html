@@ -60,12 +60,13 @@
         </div>
 
     <!-- Final page submit, get next set of questions ------------------------->
-    {% endfor %}
-    <br><button class="nav">Continue</button>
+    {% endfor %}<br>
+
+    <button class="nav">Continue</button><br>
 
   <!-- Add return to last page if not at survey start ------------------------->
   {% if questionNumber > 1 %}
-    <br><a href="/SurveyB/{{questionNumber}}" class="nav">Back</a>
+    <a href="/SurveyB/{{questionNumber}}" class="navi">Back</a><br>
   {% endif %}
   </form>
 </article>
