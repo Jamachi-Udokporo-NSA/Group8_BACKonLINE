@@ -1,43 +1,47 @@
+<!-- SurveyEnd to display and submit question forms --------------------------->
+<!-- Created 14/10/2018; Last modified 11/12/2018 ----------------------------->
+
 {%extends 'Template.html'%}
 {%block mainBlock%}
 
+<!-- header importing style sheet --------------------------------------------->
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
-<!--- A navigation bar for the python section ---------------------------->
+
+<!-- Side progress bar and directory ------------------------------------------>
 <ContentRight class="contentRight"><center>
   <h2>Survey progress</h2>
   <progress value="{{questionData[0][3]}}" max="15"></progress><br><br><br><Br>
   <a href="/Survey/0" class="button"><b>Return to survey start</b></a><br><br>
   <a href="/" class="button"><b>Log out</b></a><br>
-
 </center></ContentRight>
 
+<!-- Main content for the page ------------------------------------------------>
 <article class="contentLeft">
 
+  <!-- Get form, when reloaded next set of questions is retrived -------------->
+  <!-- Loops through question passed ------------------------------------------>
   <form action=/Thankyou method="get">
   {% for Question in questionData %}
 
+      <!-- Output question number and text ------------------------------------>
       <h3> {{ Question[0]}})  {{ Question[1]}} </h3>
 
+      <!-- If question type is single, set radio as input type -------------->
       <div style = "color:blue">
-      {% for Answer in answerData %}
-        {% if Answer[3] == Question[0] %}
-          <input type="radio" name={{Question[0]}} value="{{Answer[0]}}"> {{Answer[1]}}<br>
-        {% endif %}
-      {% endfor %}
+        {% for Answer in answerData %}
+          {% if Answer[3] == Question[0] %}
+            <input type="radio" name={{Question[0]}} value="{{Answer[0]}}"> {{Answer[1]}}<br>
+          {% endif %}
+        {% endfor %}
+      </div>
 
-        </div>
-
+    <!-- Final page submit, get next set of questions ------------------------->
     {% endfor %}
-    <br><br><button>Submit</button>
-    <br><a href="/SurveyB/{{questionNumber}}" class="button">Back</a>
+    <button class="nav">Submit</button><br>
+
+    <!-- Add return to last page ---------------------------------------------->
+    <a href="/SurveyB/{{questionNumber}}" class="navi">Back</a>
   </form>
-
-  <script>
-  // $('input[type="checkbox"]').on('change', function() {
-  //   $('input[name="' + this.name + '"]').not(this).prop('checked', false);
-  // });
-  </script>
-
 {%endblock%}

@@ -1,8 +1,11 @@
+<!--  this is extending the template.html , which contains the nav bar and css to view on this page -->
 {%extends 'Template.html'%}
 {%block mainBlock%}
+
+<!-- In this file there is two buttons Admin and Client, the admin route allows to view Client survey answers and Client can view the Questionaire-->
 <div class="form-container">
-  <a href="/Form"> <button type="Patient" class="btn">Click here if you are Patient</button> </a>
-  <a href="/Admin"> <button type="Admin" class="btn" >Click here if you are Admin</button> </a>
+  <a href="/Form"> <button type="Patient" class="btn">Click here if you are a Client</button> </a>
+  <a href="/Admin"> <button type="Admin" class="btn" >Click here if you are an Admin</button> </a>
 </div>
 
 {%endblock%}
