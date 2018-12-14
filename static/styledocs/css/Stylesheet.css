@@ -167,9 +167,15 @@ thead,td {
     border: 1px solid black;
 }
 
-tr:nth-of-type(even){
-  background-color: grey /* better to use #555555*/
-}
+/* tr:nth-of-type(even){ */
+  /*background-color: grey*/ /* better to use #555555*/
+/* } */
 /* .change:hover{
   color: red;
 } */
+
+ContentRight.contentRight {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
